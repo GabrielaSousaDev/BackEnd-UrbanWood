@@ -18,24 +18,26 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name="user")
 public class User {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_user")
 	private Long id;
 
+	@OneToOne(mappedBy = "image")
+	private Image image;
+	
 	@Column(name="login_user")
 	private String login;
 	
 	@Column(name="password_user")
 	private String password;
 	
-	@OneToOne(mappedBy = "contact")
-	private Contact contact;
-	
 	@OneToOne(mappedBy = "address")
 	private Address address;
 	
-	@OneToOne(mappedBy = "image")
-	private Image imagem;
+	@OneToOne(mappedBy = "contact")
+	private Contact contact;
+	
 
 }

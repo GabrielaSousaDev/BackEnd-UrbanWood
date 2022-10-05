@@ -13,6 +13,6 @@ public class ClientMapper {
 	    }
 
 	    public Client toEntity(ClientDTO dto) {
-	        return new Client();
+	        return new Client(dto.id(),dto.cpf(), dto.firstName(), dto.lastName(),dto.order());
 	    }
 }

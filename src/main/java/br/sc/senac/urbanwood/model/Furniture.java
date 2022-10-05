@@ -40,7 +40,7 @@ public class Furniture {
 	private Double furnitureSize;
 	
 	@OneToOne(mappedBy = "image")
-	private Image imagem;
+	private Image image;
 	
 	@OneToMany(mappedBy = "color")
 	private List<Color> color;

@@ -22,6 +22,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "woodwork")
 public class Woodwork extends User {
+	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_woodwork")
@@ -32,10 +34,10 @@ public class Woodwork extends User {
 
 	@Column(name = "description_woodwork")
 	private String description;
+	
+	@OneToMany
+	private List<Environment> environment;
 
 	@OneToMany(mappedBy = "order")
 	private List<Order> order;
-
-	@OneToMany
-	private List<Environment> environment;
 }

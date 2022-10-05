@@ -26,7 +26,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "order")
 public class Order {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_order")
@@ -34,13 +34,7 @@ public class Order {
 
 	@Column(name = "price_order")
 	private Double price;
-
-	@Column(name = "start_date_order")
-	private LocalDate startDate;
-
-	@Column(name = "end_date_order")
-	private LocalDate endDate;
-
+	
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name = "status_order", nullable = false)
 	private Status status;
@@ -48,6 +42,12 @@ public class Order {
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name = "payment_order", nullable = false)
 	private Payment payment;
+
+	@Column(name = "start_date_order")
+	private LocalDate startDate;
+
+	@Column(name = "end_date_order")
+	private LocalDate endDate;
 
 	@OneToOne(mappedBy = "client")
 	private Client client;
