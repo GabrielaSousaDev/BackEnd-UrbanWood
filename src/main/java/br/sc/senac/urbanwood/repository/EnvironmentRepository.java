@@ -8,12 +8,14 @@ import javax.persistence.Id;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import br.sc.senac.urbanwood.projection.EnvironmentProjection;
 @Repository
 public interface EnvironmentRepository extends JpaRepository<Long, Id>{
 	
-	 Optional<LivingAreaProjection> findLivingAreaById(Long id);
+	 Optional<EnvironmentProjection> findLivingAreaById(Long id);
 
-	    List<LivingAreaProjection> findLivingAreaByNameLivingArea(String nameLivingArea);
+	    List<EnvironmentProjection> findLivingAreaByNameLivingArea(String nameLivingArea);
 
 	    //Screen
 
@@ -22,5 +24,5 @@ public interface EnvironmentRepository extends JpaRepository<Long, Id>{
 	            from LivingArea l
 	            order by l.nameLivingArea
 	            """)
-	    List<LivingAreaProjectionC16> findAllOrderByName();
+	    List<EnvironmentProjection> findAllOrderByName();
 }
