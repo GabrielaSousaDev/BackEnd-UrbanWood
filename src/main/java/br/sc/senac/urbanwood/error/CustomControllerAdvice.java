@@ -4,9 +4,6 @@ import br.sc.senac.urbanwood.exception.address.AddressInvalidException;
 import br.sc.senac.urbanwood.exception.address.AddressNotFoundException;
 import br.sc.senac.urbanwood.exception.address.AddressStreetAndNumberRegisteredException;
 import br.sc.senac.urbanwood.exception.client.ClientCpfInvalidException;
-import br.sc.senac.urbanwood.exception.client.ClientCpfRegisteredException;
-import br.sc.senac.urbanwood.exception.client.ClientLoginRegisteredException;
-import br.sc.senac.urbanwood.exception.client.ClientNotFoundException;
 import br.sc.senac.urbanwood.exception.color.ColorNotFoundException;
 import br.sc.senac.urbanwood.exception.contact.ContactEmailInvalidException;
 import br.sc.senac.urbanwood.exception.contact.ContactEmailRegisteredException;
@@ -24,9 +21,6 @@ import br.sc.senac.urbanwood.exception.woodwork.WoodworkCnpjInvalidException;
 import br.sc.senac.urbanwood.exception.woodwork.WoodworkCnpjRegisteredException;
 import br.sc.senac.urbanwood.exception.woodwork.WoodworkLoginRegisteredException;
 import br.sc.senac.urbanwood.exception.woodwork.WoodworkNotFoundException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 
 public class CustomControllerAdvice {
 
