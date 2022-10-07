@@ -1,6 +1,6 @@
 package br.sc.senac.urbanwood.projection;
 
-public interface AddressFullProjection {
+public interface AddressProjection {
 	
 	Long getId();
 

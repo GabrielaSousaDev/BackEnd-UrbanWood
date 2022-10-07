@@ -7,8 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+<<<<<<< Updated upstream
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+=======
+>>>>>>> Stashed changes
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -33,16 +36,26 @@ public class Furniture {
 	@Column(name="price_furniture")
 	private Double price;
 	
+<<<<<<< Updated upstream
+=======
+	
+	private Image imagem;
+	
+>>>>>>> Stashed changes
 	@Column(name="description_furniture")
 	private String description;
 	
 	@Column(name="furniture_size_furniture")
 	private Double furnitureSize;
 	
+<<<<<<< Updated upstream
 	@OneToOne(mappedBy = "image")
 	private Image image;
 	
 	@OneToMany(mappedBy = "color")
+=======
+	
+>>>>>>> Stashed changes
 	private List<Color> color;
 	
 	

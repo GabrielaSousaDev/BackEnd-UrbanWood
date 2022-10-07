@@ -8,14 +8,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import br.sc.senac.urbanwood.model.Address;
-import br.sc.senac.urbanwood.projection.AddressFullProjection;
+import br.sc.senac.urbanwood.projection.AddressProjection;
 
 @Repository
 public interface AdressRepository extends JpaRepository<Address, Long>{
 
-	Optional<AddressFullProjection> findAddressById(Long id);
+	Optional<AddressProjection> findAddressById(Long id);
 
-    List<AddressFullProjection> findAddressByNeighborhood(String neighbor);
+    List<AddressProjection> findAddressByNeighborhood(String neighbor);
 
     boolean existsByStreetAndNumber(String street, Integer number);
 
