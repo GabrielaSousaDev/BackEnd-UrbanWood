@@ -1,17 +1,18 @@
 package br.sc.senac.urbanwood.service.color;
 
-import br.sc.senac.urbanwood.dto.color.ColorDTO;
-import br.sc.senac.urbanwood.exception.color.ColorNotFoundException;
-import br.sc.senac.urbanwood.exception.furniture.FurnitureNotFoundException;
-import br.sc.senac.urbanwood.mapper.color.ColorMapper;
-import br.sc.senac.urbanwood.model.color.Color;
-import br.sc.senac.urbanwood.model.furniture.Furniture;
-import br.sc.senac.urbanwood.projection.color.ColorProjection;
-import br.sc.senac.urbanwood.repository.color.ColorRepository;
-import br.sc.senac.urbanwood.repository.furniture.FurnitureRepository;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import br.sc.senac.urbanwood.dto.ColorDTO;
+import br.sc.senac.urbanwood.exception.color.ColorNotFoundException;
+import br.sc.senac.urbanwood.exception.furniture.FurnitureNotFoundException;
+import br.sc.senac.urbanwood.mapper.ColorMapper;
+import br.sc.senac.urbanwood.model.Color;
+import br.sc.senac.urbanwood.model.Furniture;
+import br.sc.senac.urbanwood.projection.ColorProjection;
+import br.sc.senac.urbanwood.repository.ColorRepository;
+import br.sc.senac.urbanwood.repository.FurnitureRepository;
 
 @Service
 public class ColorServiceImpl implements ColorService {

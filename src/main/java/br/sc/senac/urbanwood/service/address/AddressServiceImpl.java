@@ -1,16 +1,17 @@
 package br.sc.senac.urbanwood.service.address;
 
-import br.sc.senac.urbanwood.dto.address.AddressDTO;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import br.sc.senac.urbanwood.dto.AddressDTO;
 import br.sc.senac.urbanwood.exception.address.AddressInvalidException;
 import br.sc.senac.urbanwood.exception.address.AddressNotFoundException;
 import br.sc.senac.urbanwood.exception.address.AddressStreetAndNumberRegisteredException;
-import br.sc.senac.urbanwood.mapper.address.AddressMapper;
-import br.sc.senac.urbanwood.model.address.Address;
-import br.sc.senac.urbanwood.projection.address.AddressProjection;
-import br.sc.senac.urbanwood.repository.address.AddressRepository;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
+import br.sc.senac.urbanwood.mapper.AddressMapper;
+import br.sc.senac.urbanwood.model.Address;
+import br.sc.senac.urbanwood.projection.AddressProjection;
+import br.sc.senac.urbanwood.repository.AddressRepository;
 
 @Service
 public class AddressServiceImpl implements AddressService {
@@ -25,9 +26,9 @@ public class AddressServiceImpl implements AddressService {
 
     public AddressDTO save(AddressDTO addressDTO) {
 
-        if (addressRepository.existsByStreetAndNumber(addressDTO.street(), addressDTO.number()))
+        if (addressRepository.existsByStreetAndNumber(addressDTO.streetName(), addressDTO.number()))
             throw new AddressStreetAndNumberRegisteredException
-                    ("Street " + addressDTO.street() + " and Number " + addressDTO.number() + " are already registered");
+                    ("Street " + addressDTO.streetName() + " and Number " + addressDTO.number() + " are already registered");
 
         if (addressDTO.number() <= 0)
             throw new AddressInvalidException("Number " + addressDTO.number() + " is invalid");
@@ -45,27 +46,25 @@ public class AddressServiceImpl implements AddressService {
         if (addressDTO.number() <= 0)
             throw new AddressInvalidException("Number " + addressDTO.number() + " is invalid");
 
-        if (addressDTO.street().equals(address.getStreet()) && addressDTO.number().equals(address.getNumber())) {
+        if (addressDTO.streetName().equals(address.getStreetName())){
             address.setCep(addressDTO.cep());
             address.setCity(addressDTO.city());
             address.setNumber(addressDTO.number());
-            address.setStreet(addressDTO.street());
-            address.setProvince(addressDTO.province());
+            address.setStreetName(addressDTO.streetName());
             address.setComplement(addressDTO.complement());
             address.setNeighborhood(addressDTO.neighborhood());
             addressRepository.save(address);
             return;
         }
 
-        if (addressRepository.existsByStreetAndNumber(addressDTO.street(), addressDTO.number()))
+        if (addressRepository.existsByStreetAndNumber(addressDTO.streetName(), addressDTO.number()))
             throw new AddressStreetAndNumberRegisteredException
-                    ("Road " + addressDTO.street() + " and Number " + addressDTO.number() + " are already registered");
+                    ("Road " + addressDTO.streetName() + " and Number " + addressDTO.number() + " are already registered");
 
         address.setCep(addressDTO.cep());
         address.setCity(addressDTO.city());
         address.setNumber(addressDTO.number());
-        address.setStreet(addressDTO.street());
-        address.setProvince(addressDTO.province());
+        address.setStreetName(addressDTO.streetName());
         address.setComplement(addressDTO.complement());
         address.setNeighborhood(addressDTO.neighborhood());
         addressRepository.save(address);

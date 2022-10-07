@@ -1,13 +1,12 @@
 package br.sc.senac.urbanwood.service.client;
 
-import br.sc.senac.urbanwood.dto.client.ClientDTO;
-import br.sc.senac.urbanwood.projection.client.ClientProjection;
-import br.sc.senac.urbanwood.projection.client.screen.*;
+import java.awt.print.Pageable;
+import java.util.List;
+
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import br.sc.senac.urbanwood.dto.ClientDTO;
 
 @Service
 public interface ClientService {

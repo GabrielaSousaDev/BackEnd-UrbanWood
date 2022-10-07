@@ -1,9 +1,9 @@
 package br.sc.senac.urbanwood.service.address;
 
-import br.sc.senac.urbanwood.dto.address.AddressDTO;
-import br.sc.senac.urbanwood.projection.address.AddressProjection;
-
 import java.util.List;
+
+import br.sc.senac.urbanwood.dto.AddressDTO;
+import br.sc.senac.urbanwood.projection.AddressProjection;
 
 public interface AddressService {
 

@@ -11,7 +11,7 @@ import br.sc.senac.urbanwood.model.Address;
 import br.sc.senac.urbanwood.projection.AddressProjection;
 
 @Repository
-public interface AdressRepository extends JpaRepository<Address, Long>{
+public interface AddressRepository extends JpaRepository<Address, Long>{
 
 	Optional<AddressProjection> findAddressById(Long id);
 
