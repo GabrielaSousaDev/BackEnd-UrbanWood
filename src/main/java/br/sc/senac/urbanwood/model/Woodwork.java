@@ -35,6 +35,9 @@ public class Woodwork extends User {
 	@Column(name = "description_woodwork")
 	private String description;
 	
+	@Column(name="cnpj_woodwork")
+	private String cnpj;
+	
 	@OneToMany
 	private List<Environment> environment;
 

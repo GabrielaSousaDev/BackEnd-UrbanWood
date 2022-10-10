@@ -1,7 +1,5 @@
 package br.sc.senac.urbanwood.service.address;
 
-import java.util.List;
-
 import br.sc.senac.urbanwood.dto.AddressDTO;
 import br.sc.senac.urbanwood.projection.AddressProjection;
 
@@ -15,5 +13,5 @@ public interface AddressService {
 
     AddressProjection findById(Long id);
 
-    List<AddressProjection> findByNeighborhood(String neighborhood);
+    
 }

@@ -15,8 +15,6 @@ public interface AddressRepository extends JpaRepository<Address, Long>{
 
 	Optional<AddressProjection> findAddressById(Long id);
 
-    List<AddressProjection> findAddressByNeighborhood(String neighbor);
-
     boolean existsByStreetAndNumber(String street, Integer number);
 
 }
