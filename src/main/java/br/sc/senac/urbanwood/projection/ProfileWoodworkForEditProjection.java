@@ -3,22 +3,18 @@ package br.sc.senac.urbanwood.projection;
 import br.sc.senac.urbanwood.model.Image;
 import br.sc.senac.urbanwood.model.User;
 
-public interface ProfileClientForEditProjection {
+public interface ProfileWoodworkForEditProjection {
 
-	String getFirstName();
+	String getCompanyName();
 
-	String getLastName();
-
-	String getCpf();
+	String getCnpj();
 
 	User getUser();
 
 	interface UserProjection {
 
 		Image getImage();
-		
-		interface ImageProjection {
-			byte[] getCode();
-		}
+
 	}
+
 }

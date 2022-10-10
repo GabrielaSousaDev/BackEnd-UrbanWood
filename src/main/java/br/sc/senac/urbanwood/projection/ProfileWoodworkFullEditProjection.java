@@ -5,17 +5,17 @@ import br.sc.senac.urbanwood.model.Contact;
 import br.sc.senac.urbanwood.model.Image;
 import br.sc.senac.urbanwood.model.User;
 
-public interface ProfileClientFullEditProjection {
+public interface ProfileWoodworkFullEditProjection {
+	
+	String getCompanyName();
 
-	String getFirstName();
-
-	String getLastName();
-
-	String getCpf();
+	String getCnpj();
+	
+	String getDescription();
 
 	User getUser();
 	
-
+	
 	interface UserProjection {
 
 		String getLogin();
@@ -30,4 +30,5 @@ public interface ProfileClientFullEditProjection {
 		
 		
 	}
+
 }

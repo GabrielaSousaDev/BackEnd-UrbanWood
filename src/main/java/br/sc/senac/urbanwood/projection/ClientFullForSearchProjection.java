@@ -15,7 +15,7 @@ public interface ClientFullForSearchProjection {
 
 	String getLastName();
 
-	String getCnpj();
+	String getCpf();
 
 	User getUser();
 
