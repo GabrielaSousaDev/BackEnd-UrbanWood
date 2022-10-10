@@ -1,14 +1,12 @@
 package br.sc.senac.urbanwood.service.woodwork;
 
-import br.sc.senac.urbanwood.dto.woodwork.WoodworkDTO;
-import br.sc.senac.urbanwood.projection.woodwork.WoodworkProjection;
-import br.sc.senac.urbanwood.projection.woodwork.screen.WoodworkProjectionC8;
-import br.sc.senac.urbanwood.projection.woodwork.screen.WoodworkProjectionC9;
-import br.sc.senac.urbanwood.projection.woodwork.screen.WoodworkProjectionW6;
-import br.sc.senac.urbanwood.projection.woodwork.screen.WoodworkProjectionW7;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import br.sc.senac.urbanwood.dto.WoodworkDTO;
+import br.sc.senac.urbanwood.projection.ProfileWoodworkForEditProjection;
+import br.sc.senac.urbanwood.projection.ProfileWoodworkFullEditProjection;
 
 @Service
 public interface WoodworkService {
@@ -19,19 +17,14 @@ public interface WoodworkService {
 
     void delete(Long id);
 
-    WoodworkProjection findById(Long id);
+    ProfileWoodworkFullEditProjection findById(Long id); 
 
-    List<WoodworkProjection> findByCompanyName(String companyName);
+    List<ProfileWoodworkForEditProjection> findByCompanyName(String companyName);
+    
+    List<ProfileWoodworkForEditProjection> findByCnpj(String cnpj);
 
-    WoodworkProjection findByCnpj(String cnpj);
+    List<ProfileWoodworkForEditProjection> findByPhoneNumber(String phoneNumber);
+    
+    List<ProfileWoodworkForEditProjection> findByNeighborhood(String neighborhood);
 
-    //Screen
-
-    WoodworkProjectionC8 findC8ById(Long id);
-
-    List<WoodworkProjectionC9> findC9ByName(String companyName);
-
-    WoodworkProjectionW6 findW6ById(Long id);
-
-    WoodworkProjectionW7 findW7ById(Long id);
 }
