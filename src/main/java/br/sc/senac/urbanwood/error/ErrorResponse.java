@@ -1,4 +1,10 @@
+package br.sc.senac.urbanwood.error;
+
 import java.time.LocalDateTime;
+
+import org.springframework.http.HttpStatus;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class ErrorResponse {
 

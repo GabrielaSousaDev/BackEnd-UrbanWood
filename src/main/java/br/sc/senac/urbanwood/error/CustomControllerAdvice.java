@@ -1,5 +1,9 @@
 package br.sc.senac.urbanwood.error;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
 import br.sc.senac.urbanwood.exception.address.AddressInvalidException;
 import br.sc.senac.urbanwood.exception.address.AddressNotFoundException;
 import br.sc.senac.urbanwood.exception.address.AddressStreetAndNumberRegisteredException;
