@@ -45,32 +45,9 @@ public class AddressServiceImpl implements AddressService {
 
         if (addressDTO.number() <= 0)
             throw new AddressInvalidException("Number " + addressDTO.number() + " is invalid");
-
-        if (addressDTO.streetName().equals(address.getStreetName())){
-            address.setCep(addressDTO.cep());
-            address.setCity(addressDTO.city());
-            address.setNumber(addressDTO.number());
-            address.setStreetName(addressDTO.streetName());
-            address.setComplement(addressDTO.complement());
-            address.setNeighborhood(addressDTO.neighborhood());
-            addressRepository.save(address);
-            return;
-        }
-
-        if (addressRepository.existsByStreetAndNumber(addressDTO.streetName(), addressDTO.number()))
-            throw new AddressStreetAndNumberRegisteredException
-                    ("Road " + addressDTO.streetName() + " and Number " + addressDTO.number() + " are already registered");
-
-        address.setCep(addressDTO.cep());
-        address.setCity(addressDTO.city());
-        address.setNumber(addressDTO.number());
-        address.setStreetName(addressDTO.streetName());
-        address.setComplement(addressDTO.complement());
-        address.setNeighborhood(addressDTO.neighborhood());
-        addressRepository.save(address);
     }
 
-    public void delete(Long id) {
+         public void delete(Long id) {
         if (!addressRepository.existsById(id))
             throw new AddressNotFoundException("Address " + id + " was not found");
         addressRepository.deleteById(id);

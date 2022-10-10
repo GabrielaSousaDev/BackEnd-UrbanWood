@@ -18,7 +18,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name="address")
 public class Address{
-	
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id_address")

@@ -1,16 +1,22 @@
 package br.sc.senac.urbanwood.controller.address;
 
-import java.util.List;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.sc.senac.urbanwood.dto.AddressDTO;
 import br.sc.senac.urbanwood.projection.AddressProjection;
 import br.sc.senac.urbanwood.service.address.AddressService;
 
-@RestController
+@Controller
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/address")
 public class AddressController {
@@ -44,7 +50,7 @@ public class AddressController {
     }
 
     @GetMapping("neighborhood/{neighborhood}")
-    public ResponseEntity<List<AddressProjection>> getProjectionByNeighborhood(@PathVariable(value = "neighborhood") String neighborhood) {
+    public ResponseEntity<java.util.List<AddressProjection>> getProjectionByNeighborhood(@PathVariable(value = "neighborhood") String neighborhood) {
         return ResponseEntity.status(HttpStatus.OK).body(addressService.findByNeighborhood(neighborhood));
     }
 }

@@ -16,8 +16,6 @@ import br.sc.senac.urbanwood.exception.environment.EnvironmentNotFoundException;
 import br.sc.senac.urbanwood.exception.furniture.FurnitureInvalidException;
 import br.sc.senac.urbanwood.exception.furniture.FurnitureNameRegisteredException;
 import br.sc.senac.urbanwood.exception.furniture.FurnitureNotFoundException;
-import br.sc.senac.urbanwood.exception.item.ItemInvalidException;
-import br.sc.senac.urbanwood.exception.item.ItemNotFoundException;
 import br.sc.senac.urbanwood.exception.order.OrderInvalidException;
 import br.sc.senac.urbanwood.exception.order.OrderNotFoundException;
 import br.sc.senac.urbanwood.exception.woodwork.WoodworkCnpjInvalidException;
