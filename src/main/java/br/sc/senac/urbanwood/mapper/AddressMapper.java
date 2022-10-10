@@ -10,8 +10,7 @@ public class AddressMapper {
 
 	 public AddressDTO toDTO(Address address) {
 	        return new AddressDTO(address.getId(), address.getStreetName(), address.getNumber(), address.getNeighborhood(),
-	        		address.getComplement(), address.getCity(),
-	        		address.getCep(), address.getUser());
+	        		address.getComplement(), address.getCity(),address.getCep(), address.getUser());
 	    }
 
 	    public Address toEntity(AddressDTO dto) {
