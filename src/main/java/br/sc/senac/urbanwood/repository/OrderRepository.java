@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 @Repository
-public interface Order extends JpaRepository<Long, Id>{
+public interface OrderRepository extends JpaRepository<Long, Id>{
 
 	
 

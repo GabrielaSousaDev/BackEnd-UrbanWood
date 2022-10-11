@@ -1,4 +1,4 @@
-package br.sc.senac.urbanwood.controller.living_area;
+package br.sc.senac.urbanwood.controller.environment;
 
 import br.sc.senac.urbanwood.dto.living_area.LivingAreaDTO;
 import br.sc.senac.urbanwood.projection.living_area.LivingAreaProjection;

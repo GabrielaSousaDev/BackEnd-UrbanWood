@@ -37,7 +37,7 @@ public class OrderServiceImpl implements OrderService {
 
     public OrderDTO save(OrderCreateDTO orderCreateDTO) {
 
-        Order order = orderMapper.toEntity(orderCreateDTO);
+        OrderRepository order = orderMapper.toEntity(orderCreateDTO);
 
         if (orderCreateDTO.priceOrder() <= 0)
             throw new OrderInvalidException("Price " + orderCreateDTO.priceOrder() + " is invalid");
@@ -52,13 +52,13 @@ public class OrderServiceImpl implements OrderService {
             order.getFurniture().add(furniture);
         }
 
-        Order orderSaved = orderRepository.save(order);
+        OrderRepository orderSaved = orderRepository.save(order);
         return orderMapper.toDTO(orderSaved);
     }
 
     public void update(OrderCreateDTO orderCreateDTO, Long id) {
 
-        Order order = orderRepository.findById(id)
+        OrderRepository order = orderRepository.findById(id)
                 .orElseThrow(() -> new OrderNotFoundException("Order " + id + " was not found"));
 
         if (orderCreateDTO.priceOrder() < 0)
