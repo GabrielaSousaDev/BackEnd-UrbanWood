@@ -80,5 +80,23 @@ public class WoodworkServiceImpl implements WoodworkService {
 		return woodwork;
 	}
 
+	@Override
+	public java.util.List<ProfileWoodworkForEditProjection> findByCompanyName(String companyName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public java.util.List<ProfileWoodworkForEditProjection> findByPhoneNumber(String phoneNumber) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public java.util.List<ProfileWoodworkForEditProjection> findByNeighborhood(String neighborhood) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }

@@ -18,8 +18,6 @@ public interface WoodworkRepository extends JpaRepository<Long, Id> {
 	boolean existsById(Long id);
 
 	boolean existsByCnpj(String cnpj);
-
-	boolean existsByLogin(String login);
 	
 	ProfileWoodworkFullEditProjection findById(Long id); 
 
