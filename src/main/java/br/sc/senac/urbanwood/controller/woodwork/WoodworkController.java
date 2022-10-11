@@ -1,17 +1,25 @@
 package br.sc.senac.urbanwood.controller.woodwork;
 
-import br.sc.senac.urbanwood.dto.woodwork.WoodworkDTO;
-import br.sc.senac.urbanwood.projection.woodwork.WoodworkProjection;
-import br.sc.senac.urbanwood.projection.woodwork.screen.WoodworkProjectionC8;
-import br.sc.senac.urbanwood.projection.woodwork.screen.WoodworkProjectionC9;
+import java.util.List;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.sc.senac.urbanwood.dto.WoodworkDTO;
+import br.sc.senac.urbanwood.projection.ProfileWoodworkForEditProjection;
+import br.sc.senac.urbanwood.projection.ProfileWoodworkFullEditProjection;
 import br.sc.senac.urbanwood.projection.woodwork.screen.WoodworkProjectionW6;
 import br.sc.senac.urbanwood.projection.woodwork.screen.WoodworkProjectionW7;
 import br.sc.senac.urbanwood.service.woodwork.WoodworkService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -19,7 +27,6 @@ import java.util.List;
 public class WoodworkController {
 
     private final WoodworkService woodworkService;
-
     public WoodworkController(WoodworkService woodworkService) {
         this.woodworkService = woodworkService;
     }
@@ -42,35 +49,30 @@ public class WoodworkController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<WoodworkProjection> getProjectionById(@PathVariable(value = "id") Long id) {
+    public ResponseEntity<ProfileWoodworkFullEditProjection> getProjectionById(@PathVariable(value = "id") Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(woodworkService.findById(id));
     }
 
     @GetMapping("cnpj/{cnpj}")
-    public ResponseEntity<WoodworkProjection> getProjectionByCnpj(@PathVariable(value = "cnpj") String cnpj) {
+    public ResponseEntity<ProfileWoodworkForEditProjection> getProjectionByCnpj(@PathVariable(value = "cnpj") String cnpj) {
         return ResponseEntity.status(HttpStatus.OK).body(woodworkService.findByCnpj(cnpj));
     }
 
     @GetMapping("name/{companyName}")
-    public ResponseEntity<List<WoodworkProjection>> getProjectionByCompanyName(@PathVariable(value = "companyName") String companyName) {
+    public ResponseEntity<List<ProfileWoodworkForEditProjection>> getProjectionByCompanyName(@PathVariable(value = "companyName") String companyName) {
         return ResponseEntity.status(HttpStatus.OK).body(woodworkService.findByCompanyName(companyName));
     }
 
-    /*          |||
-      Screen    |||
-      Screen    |||
-      Screen    vvv
-     */
-
-    //Approved
-    @GetMapping("c8/{id}")
-    public ResponseEntity<WoodworkProjectionC8> getProjectionC8ById(@PathVariable(value = "id") Long id) {
+    
+   
+    @GetMapping("searchWoodwork/{id}")
+    public ResponseEntity<ProfileWoodworkForEditProjection> getProjectionC8ById(@PathVariable(value = "id") Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(woodworkService.findC8ById(id));
     }
 
     //Approved
-    @GetMapping("c9/{companyName}")
-    public ResponseEntity<List<WoodworkProjectionC9>> getProjectionC9ByCompanyName(@PathVariable(value = "companyName") String companyName) {
+    @GetMapping("searchWoodwork/{companyName}")
+    public ResponseEntity<List<ProfileWoodworkForEditProjection>> getProjectionC9ByCompanyName(@PathVariable(value = "companyName") String companyName) {
         return ResponseEntity.status(HttpStatus.OK).body(woodworkService.findC9ByName(companyName));
     }
 

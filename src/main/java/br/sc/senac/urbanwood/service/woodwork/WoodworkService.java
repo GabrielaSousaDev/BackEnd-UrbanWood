@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import br.sc.senac.urbanwood.dto.WoodworkDTO;
+import br.sc.senac.urbanwood.model.Woodwork;
 import br.sc.senac.urbanwood.projection.ProfileWoodworkForEditProjection;
 import br.sc.senac.urbanwood.projection.ProfileWoodworkFullEditProjection;
 
@@ -21,10 +22,12 @@ public interface WoodworkService {
 
     List<ProfileWoodworkForEditProjection> findByCompanyName(String companyName);
     
-    List<ProfileWoodworkForEditProjection> findByCnpj(String cnpj);
+    ProfileWoodworkForEditProjection findByCnpj(String cnpj);
 
     List<ProfileWoodworkForEditProjection> findByPhoneNumber(String phoneNumber);
     
     List<ProfileWoodworkForEditProjection> findByNeighborhood(String neighborhood);
+
+	
 
 }
