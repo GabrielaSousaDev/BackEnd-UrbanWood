@@ -1,14 +1,18 @@
 package br.sc.senac.urbanwood.service.address;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import br.sc.senac.urbanwood.dto.AddressDTO;
 import br.sc.senac.urbanwood.exception.address.AddressInvalidException;
 import br.sc.senac.urbanwood.exception.address.AddressNotFoundException;
 import br.sc.senac.urbanwood.exception.address.AddressStreetAndNumberRegisteredException;
+import br.sc.senac.urbanwood.exception.woodwork.WoodworkNotFoundException;
 import br.sc.senac.urbanwood.mapper.AddressMapper;
 import br.sc.senac.urbanwood.model.Address;
 import br.sc.senac.urbanwood.projection.AddressProjection;
+import br.sc.senac.urbanwood.projection.ProfileWoodworkForEditProjection;
 import br.sc.senac.urbanwood.repository.AddressRepository;
 
 @Service
@@ -55,5 +59,15 @@ public class AddressServiceImpl implements AddressService {
 		return addressRepository.findAddressById(id)
 				.orElseThrow(() -> new AddressNotFoundException("Address " + id + " was not found"));
 	}
+
+	public List findByNeighborhoodWoodwork(String neighborhoodWoodwork) {
+		List<ProfileWoodworkForEditProjection> address = addressRepository.findByWoodworkNeighborhood(neighborhoodWoodwork);
+
+		if (address.isEmpty())
+			throw new WoodworkNotFoundException("Woodwork " + neighborhoodWoodwork + " was not found");
+		return address;
+	}
+
+	
 
 }

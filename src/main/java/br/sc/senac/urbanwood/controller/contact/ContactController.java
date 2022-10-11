@@ -1,11 +1,21 @@
 package br.sc.senac.urbanwood.controller.contact;
 
-import br.sc.senac.urbanwood.dto.contact.ContactDTO;
-import br.sc.senac.urbanwood.projection.contact.ContactProjection;
-import br.sc.senac.urbanwood.service.contact.ContactService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.sc.senac.urbanwood.dto.ContactDTO;
+import br.sc.senac.urbanwood.projection.ProfileWoodworkForEditProjection;
+import br.sc.senac.urbanwood.projection.ClientBasicForSearchProjection.UserProjection.ContactProjection;
+import br.sc.senac.urbanwood.service.contact.ContactService;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -40,13 +50,9 @@ public class ContactController {
         return ResponseEntity.status(HttpStatus.OK).body(contactService.findById(id));
     }
 
-    @GetMapping("email/{email}")
-    public ResponseEntity<ContactProjection> getProjectionByEmail(@PathVariable(value = "email") String email) {
-        return ResponseEntity.status(HttpStatus.OK).body(contactService.findByEmail(email));
-    }
-
-    @GetMapping("phoneNumber/{phoneNumber}")
-    public ResponseEntity<ContactProjection> getProjectionByPhoneNumber(@PathVariable(value = "phoneNumber") String phoneNumber) {
-        return ResponseEntity.status(HttpStatus.OK).body(contactService.findByPhoneNumber(phoneNumber));
+   
+    @GetMapping("/{phoneNumberWoodwork}")
+    public ResponseEntity<ProfileWoodworkForEditProjection> getProjectionByWoodoworkPhoneNumber(@PathVariable(value = "phoneNumberWoodwork") String phoneNumberWoodwork) {
+        return ResponseEntity.status(HttpStatus.OK).body(contactService.findByWoodworkPhoneNumber(phoneNumberWoodwork));
     }
 }

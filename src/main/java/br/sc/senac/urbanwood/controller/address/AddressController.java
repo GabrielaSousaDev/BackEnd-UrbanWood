@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.sc.senac.urbanwood.dto.AddressDTO;
 import br.sc.senac.urbanwood.projection.AddressProjection;
+import br.sc.senac.urbanwood.projection.ProfileWoodworkForEditProjection;
 import br.sc.senac.urbanwood.service.address.AddressService;
 
 @Controller
@@ -49,8 +50,8 @@ public class AddressController {
         return ResponseEntity.status(HttpStatus.OK).body(addressService.findById(id));
     }
 
-    @GetMapping("neighborhood/{neighborhood}")
-    public ResponseEntity<java.util.List<AddressProjection>> getProjectionByNeighborhood(@PathVariable(value = "neighborhood") String neighborhood) {
-        return ResponseEntity.status(HttpStatus.OK).body(addressService.findByNeighborhood(neighborhood));
+    @GetMapping("/{neighborhoodWoodwork}")
+    public ResponseEntity<java.util.List<ProfileWoodworkForEditProjection>> getProjectionByNeighborhood(@PathVariable(value = "neighborhood") String neighborhood) {
+        return ResponseEntity.status(HttpStatus.OK).body(addressService.findByWoodworkNeighborhood(neighborhood));
     }
 }

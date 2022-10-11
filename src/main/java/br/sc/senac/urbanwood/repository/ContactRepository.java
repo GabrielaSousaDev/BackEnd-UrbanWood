@@ -4,11 +4,22 @@ import javax.persistence.Id;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-@Repository
-public interface ContactRepository extends JpaRepository<Long, Id>{
-	
-	
-	    boolean existsByEmail(String email);
 
-	    boolean existsByPhoneNumber(String phoneNumber);
+import br.sc.senac.urbanwood.dto.ContactDTO;
+import br.sc.senac.urbanwood.model.Contact;
+import br.sc.senac.urbanwood.projection.ClientBasicForSearchProjection.UserProjection.ContactProjection;
+
+@Repository
+public interface ContactRepository extends JpaRepository<Long, Id> {
+
+	boolean existsById(Long id);
+
+	boolean existsByEmail(String email);
+
+	ContactProjection findByWoodworkPhoneNumber(String phoneNumberWoodwork);
+
+	ContactProjection findById(Long id);
+
+	ContactDTO save(ContactDTO contactDTO);
+
 }

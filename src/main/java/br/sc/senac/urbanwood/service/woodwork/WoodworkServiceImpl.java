@@ -72,31 +72,15 @@ public class WoodworkServiceImpl implements WoodworkService {
 				.orElseThrow(() -> new WoodworkNotFoundException("Woodwork " + cnpj + " was not found"));
 	}
 
-	public List findByCompanyName(String companyName) {
-		List<ProfileWoodworkForEditProjection> woodwork = woodworkRepository.findByCompanyName(companyName);
+	public java.util.List<ProfileWoodworkForEditProjection> findByCompanyName(String companyName) {
+		java.util.List<ProfileWoodworkForEditProjection> woodwork = woodworkRepository.findByCompanyName(companyName);
 
 		if (woodwork.isEmpty())
 			throw new WoodworkNotFoundException("Woodwork " + companyName + " was not found");
 		return woodwork;
 	}
 
-	@Override
-	public java.util.List<ProfileWoodworkForEditProjection> findByCompanyName(String companyName) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public java.util.List<ProfileWoodworkForEditProjection> findByPhoneNumber(String phoneNumber) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public java.util.List<ProfileWoodworkForEditProjection> findByNeighborhood(String neighborhood) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	
 }

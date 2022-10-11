@@ -26,8 +26,6 @@ public interface WoodworkRepository extends JpaRepository<Long, Id> {
     ProfileWoodworkForEditProjection findByCnpj(String cnpj);
 
     List<ProfileWoodworkForEditProjection> findByPhoneNumber(String phoneNumber);
-    
-    List<ProfileWoodworkForEditProjection> findByNeighborhood(String neighborhood);
 
 	Woodwork save(Woodwork woodwork);
 

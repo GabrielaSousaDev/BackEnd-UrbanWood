@@ -1,21 +1,21 @@
 package br.sc.senac.urbanwood.service.contact;
 
-import br.sc.senac.urbanwood.dto.contact.ContactDTO;
-import br.sc.senac.urbanwood.projection.contact.ContactProjection;
 import org.springframework.stereotype.Service;
+
+import br.sc.senac.urbanwood.dto.ContactDTO;
+import br.sc.senac.urbanwood.projection.ClientBasicForSearchProjection.UserProjection.ContactProjection;
+import br.sc.senac.urbanwood.projection.ProfileWoodworkForEditProjection;
 
 @Service
 public interface ContactService {
 
-    ContactDTO save(ContactDTO contactDTO);
+	ContactDTO save(ContactDTO contactDTO);
 
-    void update(ContactDTO contactDTO, Long id);
+	void update(ContactDTO contactDTO, Long id);
 
-    void delete(Long id);
+	void delete(Long id);
 
-    ContactProjection findById(Long id);
+	ContactProjection findById(Long id);
 
-    ContactProjection findByEmail(String email);
-
-    ContactProjection findByPhoneNumber(String phoneNumber);
+	ProfileWoodworkForEditProjection findByWoodworkPhoneNumber(String phoneNumberWoodwork);
 }
