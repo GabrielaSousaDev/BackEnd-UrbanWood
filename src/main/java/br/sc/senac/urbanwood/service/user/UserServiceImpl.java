@@ -39,13 +39,18 @@ public class UserServiceImpl {
 			return;
 		}
 
-		if (contactRepository.existsByEmail(contactDTO.email()))
-			throw new ContactEmailRegisteredException("Email " + contactDTO.email() + " is already registered");
+		if (userRepository.existsById(userDTO.id()))
+			throw new ContactEmailRegisteredException("Email " + userDTO.id() + " is already registered");
 
-		contact.setEmail(contactDTO.email());
-		contact.setPhoneNumber(contactDTO.phoneNumber());
-		contact.setSocialNetwork(contactDTO.socialNetwork());
-		contactRepository.save(contact);
+		user.setLogin(userDTO.login());
+		user.setPassword(userDTO.password());
+		userRepository.save(user);
+	}
+	
+	public void delete(Long id) {
+		if (!userRepository.existsById(id))
+			throw new ContactNotFoundException("User id " + id + " was not found");
+		userRepository.delete(id);
 	}
 	
 
