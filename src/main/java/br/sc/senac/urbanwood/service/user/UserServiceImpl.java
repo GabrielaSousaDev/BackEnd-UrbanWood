@@ -3,6 +3,8 @@ package br.sc.senac.urbanwood.service.user;
 import br.sc.senac.urbanwood.dto.UserDTO;
 import br.sc.senac.urbanwood.exception.contact.ContactEmailRegisteredException;
 import br.sc.senac.urbanwood.exception.contact.ContactNotFoundException;
+import br.sc.senac.urbanwood.exception.user.UserInvalidException;
+import br.sc.senac.urbanwood.exception.user.UserNotFoundException;
 import br.sc.senac.urbanwood.mapper.UserMapper;
 import br.sc.senac.urbanwood.model.User;
 import br.sc.senac.urbanwood.projection.UserProjection;
@@ -21,7 +23,7 @@ public class UserServiceImpl {
 	public UserDTO save(UserDTO userDTO) {
 
 		if (userRepository.existsById(userDTO.id()))
-			throw new ContactEmailRegisteredException("User id " + userDTO.id() + " is already registered");
+			throw new UserInvalidException("User id " + userDTO.id() + " is already registered");
 
 		User user = userMapper.toEntity(userDTO);
 		User userSaved = userRepository.save(user);
@@ -31,7 +33,7 @@ public class UserServiceImpl {
 	public void update(UserDTO userDTO, Long id) {
 
 		UserProjection user = userRepository.findById(id)
-				.orElseThrow(() -> new ContactNotFoundException("User" + id + " was not found"));
+				.orElseThrow(() -> new UserNotFoundException("User" + id + " was not found"));
 
 		if (userDTO.id().equals(user.getId())) {
 			user.setLogin(userDTO.login());

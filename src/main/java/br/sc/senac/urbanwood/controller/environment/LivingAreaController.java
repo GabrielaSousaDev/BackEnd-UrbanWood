@@ -3,7 +3,7 @@ package br.sc.senac.urbanwood.controller.environment;
 import br.sc.senac.urbanwood.dto.living_area.LivingAreaDTO;
 import br.sc.senac.urbanwood.projection.living_area.LivingAreaProjection;
 import br.sc.senac.urbanwood.projection.living_area.screen.LivingAreaProjectionC16;
-import br.sc.senac.urbanwood.service.environment.LivingAreaService;
+import br.sc.senac.urbanwood.service.environment.EnvironmentService;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +16,9 @@ import java.util.List;
 @RequestMapping("/livingArea")
 public class LivingAreaController {
 
-    private final LivingAreaService livingAreaService;
+    private final EnvironmentService livingAreaService;
 
-    public LivingAreaController(LivingAreaService livingAreaService) {
+    public LivingAreaController(EnvironmentService livingAreaService) {
         this.livingAreaService = livingAreaService;
     }
 
