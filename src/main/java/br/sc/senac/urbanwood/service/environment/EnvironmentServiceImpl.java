@@ -5,9 +5,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import br.sc.senac.urbanwood.dto.EnvironmentDTO;
-import br.sc.senac.urbanwood.exception.woodwork.WoodworkNotFoundException;
+import br.sc.senac.urbanwood.exception.environment.EnvironmentNotFoundException;
 import br.sc.senac.urbanwood.mapper.EnvironmentMapper;
 import br.sc.senac.urbanwood.model.Environment;
+import br.sc.senac.urbanwood.projection.EnvironmentProjection;
 import br.sc.senac.urbanwood.repository.EnvironmentRepository;
 
 
@@ -24,50 +25,35 @@ public class EnvironmentServiceImpl implements EnvironmentService {
 
 	public EnvironmentDTO save(EnvironmentDTO environmentDTO) {
 
-		Environment environment = environmentRepository.findById(environmentDTO.id()).orElseThrow(
-				() -> new WoodworkNotFoundException("Environment " + livingAreaDTO.idWoodwork() + " was not found"));
-
-		Environment environment1 = environmentMapper.toEntity(environmentDTO);
-		Environment environmentSaved = environmentRepository.save(environment1);
+		Environment environment = environmentMapper.toEntity(environmentDTO);
+		Environment environmentSaved = environmentRepository.save(environment);
 		return environmentMapper.toDTO(environmentSaved);
 	}
 
-	public void update(LivingAreaDTO livingAreaDTO, Long id) {
+	public void update(EnvironmentDTO environmentDTO, Long id) {
 
-		LivingArea livingArea = livingAreaRepository.findById(id)
-				.orElseThrow(() -> new LivingAreaNotFoundException("Living Area " + id + " was not found"));
+		Environment environment = (Environment) environmentRepository.findById(id)
+				.orElseThrow(() -> new EnvironmentNotFoundException("Environment " + id + " was not found"));
 
-		livingArea.setNameLivingArea(livingAreaDTO.nameLivingArea());
-		livingAreaRepository.save(livingArea);
+		environment.setName(environmentDTO.name());
+		environmentRepository.save(environment);
 	}
 
 	public void delete(Long id) {
-		if (!livingAreaRepository.existsById(id))
-			throw new LivingAreaNotFoundException("Living Area " + id + " was not found");
-		livingAreaRepository.deleteById(id);
+		if (!EnvironmentRepository.existsById(id))
+			throw new EnvironmentNotFoundException("Environment " + id + " was not found");
+		environmentRepository.delete(id);
 	}
 
-	public LivingAreaProjection findById(Long id) {
-		return livingAreaRepository.findLivingAreaById(id)
-				.orElseThrow(() -> new LivingAreaNotFoundException("Living Area " + id + " was not found"));
+	public EnvironmentProjection findById(Long id) {
+		return environmentRepository.findById(id)
+				.orElseThrow(() -> new EnvironmentNotFoundException("Environment " + id + " was not found"));
 
 	}
 
-	public List<LivingAreaProjection> findByNameLivingArea(String nameLivingArea) {
-		List<LivingAreaProjection> livingArea = livingAreaRepository.findLivingAreaByNameLivingArea(nameLivingArea);
-
-		if (livingArea.isEmpty())
-			throw new LivingAreaNotFoundException("Living Area " + nameLivingArea + " was not found");
-		return livingArea;
+	public List<EnvironmentProjection> listByWoodworkById(Long id) {
+		List<EnvironmentProjection> environment = environmentRepository.listByWoodworkById(id);
+		return environment;
 	}
 
-	// Screen
-
-	public List<LivingAreaProjectionC16> findC16OrderByName() {
-		List<LivingAreaProjectionC16> livingArea = livingAreaRepository.findAllOrderByName();
-
-		if (livingArea.isEmpty())
-			throw new LivingAreaNotFoundException("Was not found");
-		return livingArea;
-	}
 }

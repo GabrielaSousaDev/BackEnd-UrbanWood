@@ -1,5 +1,7 @@
 package br.sc.senac.urbanwood.service.environment;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import br.sc.senac.urbanwood.dto.EnvironmentDTO;
@@ -17,6 +19,8 @@ public interface EnvironmentService {
 
     EnvironmentProjection findById(Long id);
     
+    boolean existsById(Long id);
     
+    List<EnvironmentProjection> listByWoodworkById(Long id);
 
 }
