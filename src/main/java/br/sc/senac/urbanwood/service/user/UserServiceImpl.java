@@ -1,17 +1,7 @@
 package br.sc.senac.urbanwood.service.user;
 
-import br.sc.senac.urbanwood.dto.UserDTO;
-import br.sc.senac.urbanwood.exception.contact.ContactEmailRegisteredException;
-import br.sc.senac.urbanwood.exception.contact.ContactNotFoundException;
-import br.sc.senac.urbanwood.exception.user.UserInvalidException;
-import br.sc.senac.urbanwood.exception.user.UserNotFoundException;
-import br.sc.senac.urbanwood.mapper.UserMapper;
-import br.sc.senac.urbanwood.model.User;
-import br.sc.senac.urbanwood.projection.UserProjection;
-import br.sc.senac.urbanwood.repository.UserRepository;
-
 public class UserServiceImpl {
-
+/*
 	private final UserRepository userRepository;
 	private final UserMapper userMapper;
 
@@ -55,5 +45,5 @@ public class UserServiceImpl {
 		userRepository.delete(id);
 	}
 	
-
+*/
 }

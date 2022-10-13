@@ -2,19 +2,9 @@ package br.sc.senac.urbanwood.service.contact;
 
 import org.springframework.stereotype.Service;
 
-import br.sc.senac.urbanwood.dto.ContactDTO;
-import br.sc.senac.urbanwood.exception.contact.ContactEmailRegisteredException;
-import br.sc.senac.urbanwood.exception.contact.ContactNotFoundException;
-import br.sc.senac.urbanwood.exception.contact.ContactPhoneNumberRegisteredException;
-import br.sc.senac.urbanwood.mapper.ContactMapper;
-import br.sc.senac.urbanwood.model.Contact;
-import br.sc.senac.urbanwood.projection.ClientBasicForSearchProjection.UserProjection.ContactProjection;
-import br.sc.senac.urbanwood.projection.ProfileWoodworkForEditProjection;
-import br.sc.senac.urbanwood.repository.ContactRepository;
-
 @Service
 public class ContactServiceImpl implements ContactService {
-
+/*
 	private final ContactRepository contactRepository;
 	private final ContactMapper contactMapper;
 
@@ -68,5 +58,5 @@ public class ContactServiceImpl implements ContactService {
 		public ProfileWoodworkForEditProjection findByWoodworkPhoneNumber(String phoneNumberWoodwork) {
 		return contactRepository.findByWoodworkPhoneNumber(phoneNumberWoodwork)
 				.orElseThrow(() -> new ContactNotFoundException("Contact " + phoneNumber + " was not found"));
-	}
+	}*/
 }

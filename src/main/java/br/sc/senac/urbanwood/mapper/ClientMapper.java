@@ -7,12 +7,12 @@ import br.sc.senac.urbanwood.model.Client;
 
 @Service
 public class ClientMapper {
-
+/*
 	 public ClientDTO toDTO(Client client) {
 	        return new ClientDTO(client.getId(), client.getCpf(), client.getFirstName(), client.getLastName(), client.getOrder());
 	    }
 
 	    public Client toEntity(ClientDTO dto) {
 	        return new Client(dto.id(),dto.cpf(), dto.firstName(), dto.lastName(),dto.order());
-	    }
+	    }*/
 }

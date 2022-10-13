@@ -1,34 +1,10 @@
 package br.sc.senac.urbanwood.service.client;
 
-import java.util.List;
-
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import br.sc.senac.urbanwood.dto.ClientDTO;
-import br.sc.senac.urbanwood.exception.address.AddressNotFoundException;
-import br.sc.senac.urbanwood.exception.client.ClientCpfInvalidException;
-import br.sc.senac.urbanwood.exception.client.ClientCpfRegisteredException;
-import br.sc.senac.urbanwood.exception.client.ClientLoginRegisteredException;
-import br.sc.senac.urbanwood.exception.client.ClientNotFoundException;
-import br.sc.senac.urbanwood.exception.contact.ContactNotFoundException;
-import br.sc.senac.urbanwood.mapper.ClientMapper;
-import br.sc.senac.urbanwood.model.Address;
-import br.sc.senac.urbanwood.model.Client;
-import br.sc.senac.urbanwood.model.Contact;
-import br.sc.senac.urbanwood.projection.client.ClientProjection;
-import br.sc.senac.urbanwood.projection.client.screen.*;
-import br.sc.senac.urbanwood.repository.AddressRepository;
-import br.sc.senac.urbanwood.repository.ClientRepository;
-import br.sc.senac.urbanwood.repository.ContactRepository;
-import br.sc.senac.urbanwood.util.CPFValidator;
 
 @Service
 public class ClientServiceImpl implements ClientService {
-
+/*
     private final ClientRepository clientRepository;
     private final ClientMapper clientMapper;
     private final ContactRepository contactRepository;
@@ -147,5 +123,5 @@ public class ClientServiceImpl implements ClientService {
     public ClientProjectionC7 findC7ById(Long id) {
         return clientRepository.findClientC7ById(id)
                 .orElseThrow(() -> new ClientNotFoundException("Client " + id + " was not found"));
-    }
+    }*/
 }

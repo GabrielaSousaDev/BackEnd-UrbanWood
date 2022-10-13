@@ -13,7 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import br.sc.senac.urbanwood.enumeration.Payment;
@@ -26,7 +26,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "order")
+@Table(name = "tb_order")
 public class Order {
 	
 	@Id
@@ -51,15 +51,17 @@ public class Order {
 	@Column(name = "end_date_order")
 	private LocalDate endDate;
 
-	@OneToOne(mappedBy = "client")
+	@ManyToOne
+	@JoinColumn(name = "id_client", nullable = false)
 	private Client client;
 
-	@OneToOne(mappedBy = "woodwork")
+	@ManyToOne
+	@JoinColumn(name = "id_woodwork", nullable = false)
 	private Woodwork woodwork;
 
 	@ManyToMany
-	@JoinTable(name = "order_furniture", joinColumns = @JoinColumn(name = "order_id"),
-	inverseJoinColumns = @JoinColumn(name = "furniture_id"))
+	@JoinTable(name = "furniture_order", joinColumns = @JoinColumn(name = "id_order"),
+	inverseJoinColumns = @JoinColumn(name = "id_furniture"))
 	private List<Furniture> furnitures;
 
 }

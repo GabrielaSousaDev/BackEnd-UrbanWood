@@ -5,19 +5,13 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import br.sc.senac.urbanwood.dto.AddressDTO;
-import br.sc.senac.urbanwood.exception.address.AddressInvalidException;
-import br.sc.senac.urbanwood.exception.address.AddressNotFoundException;
-import br.sc.senac.urbanwood.exception.address.AddressStreetAndNumberRegisteredException;
-import br.sc.senac.urbanwood.exception.woodwork.WoodworkNotFoundException;
-import br.sc.senac.urbanwood.mapper.AddressMapper;
-import br.sc.senac.urbanwood.model.Address;
 import br.sc.senac.urbanwood.projection.AddressProjection;
 import br.sc.senac.urbanwood.projection.ProfileWoodworkForEditProjection;
-import br.sc.senac.urbanwood.repository.AddressRepository;
 
 @Service
 public class AddressServiceImpl implements AddressService {
 
+/*
 	private final AddressRepository addressRepository;
 	private final AddressMapper addressMapper;
 
@@ -68,6 +62,6 @@ public class AddressServiceImpl implements AddressService {
 		return address;
 	}
 
-	
+	*/
 
 }

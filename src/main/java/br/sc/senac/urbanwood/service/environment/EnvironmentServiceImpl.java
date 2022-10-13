@@ -1,20 +1,11 @@
 package br.sc.senac.urbanwood.service.environment;
 
-import java.util.List;
-
 import org.springframework.stereotype.Service;
-
-import br.sc.senac.urbanwood.dto.EnvironmentDTO;
-import br.sc.senac.urbanwood.exception.environment.EnvironmentNotFoundException;
-import br.sc.senac.urbanwood.mapper.EnvironmentMapper;
-import br.sc.senac.urbanwood.model.Environment;
-import br.sc.senac.urbanwood.projection.EnvironmentProjection;
-import br.sc.senac.urbanwood.repository.EnvironmentRepository;
 
 
 @Service
 public class EnvironmentServiceImpl implements EnvironmentService {
-
+/*
 	private final EnvironmentMapper environmentMapper;
 	private final EnvironmentRepository environmentRepository;
 
@@ -55,5 +46,5 @@ public class EnvironmentServiceImpl implements EnvironmentService {
 		List<EnvironmentProjection> environment = environmentRepository.listByWoodworkById(id);
 		return environment;
 	}
-
+*/
 }

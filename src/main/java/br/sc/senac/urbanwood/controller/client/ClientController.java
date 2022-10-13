@@ -1,22 +1,14 @@
 package br.sc.senac.urbanwood.controller.client;
 
-import br.sc.senac.urbanwood.dto.client.ClientDTO;
-import br.sc.senac.urbanwood.projection.client.ClientProjection;
-import br.sc.senac.urbanwood.projection.client.screen.*;
-import br.sc.senac.urbanwood.service.client.ClientService;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/client")
 public class ClientController {
-
+/*
     private final ClientService clientService;
 
     public ClientController(ClientService clientService) {
@@ -41,10 +33,10 @@ public class ClientController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ClientProjection> getProjectionById(@PathVariable(value = "id") Long id) {
+    public ResponseEntity<ProfileClientForEditProjection> getProjectionById(@PathVariable(value = "id") Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(clientService.findById(id));
     }
-
+/*
     @GetMapping("cpf/{cpf}")
     public ResponseEntity<ClientProjection> getProjectionByCpf(@PathVariable(value = "cpf") String cpf) {
         return ResponseEntity.status(HttpStatus.OK).body(clientService.findByCpf(cpf));
@@ -55,11 +47,11 @@ public class ClientController {
         return ResponseEntity.status(HttpStatus.OK).body(clientService.findByNameClient(nameClient));
     }
 
-    /*          |||
+                |||
       Screen    |||
       Screen    |||
       Screen    vvv
-     */
+     
 
     //Approved
     @GetMapping("w9/{page}")
@@ -90,5 +82,5 @@ public class ClientController {
     @GetMapping("c7/{id}")
     public ResponseEntity<ClientProjectionC7> getProjectionC7ById(@PathVariable(value = "id") Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(clientService.findC7ById(id));
-    }
+    }*/
 }

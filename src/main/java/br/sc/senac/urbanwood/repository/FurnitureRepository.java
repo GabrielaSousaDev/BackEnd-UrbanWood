@@ -1,14 +1,12 @@
 package br.sc.senac.urbanwood.repository;
 
-import javax.persistence.Id;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-@Repository
-public interface FurnitureRepository extends JpaRepository<Long, Id>{
-	 
-	boolean existsByNameFurniture(String nameFurniture);
 
+import br.sc.senac.urbanwood.model.Furniture;
+
+@Repository
+public interface FurnitureRepository extends JpaRepository<Furniture, Long>{
 	   
 	   /* @Query(value = """
 	            select f.nameFurniture as nameFurniture, f.priceFurniture as priceFurniture, f.image as image

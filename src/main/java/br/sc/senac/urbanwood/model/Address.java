@@ -17,32 +17,28 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name="address")
-public class Address{
-
+public class Address {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id_address")
 	private Long id;
 
-	@Column(name="street_name_address")
+	@Column(name="street_name_address", length = 45, nullable = false)
 	private String streetName;
 	
-	@Column(name="number_address")
+	@Column(name="number_address", nullable = false)
 	private int number;
 	
-	@Column(name="neighborhood_address")
+	@Column(name="neighborhood_address", length = 45, nullable = false)
 	private String neighborhood;
 	
-	@Column(name="complement_address")
+	@Column(name="complement_address", length = 45, nullable = false)
 	private String complement;
 	
-	@Column(name="city_address")
+	@Column(name="city_address", length = 45, nullable = false)
 	private String city;
 	
-	@Column(name="cep_address")
+	@Column(name="cep_address", nullable = false)
 	private String cep;
-	
-	@OneToOne(mappedBy = "address")
-	private User user;
 }

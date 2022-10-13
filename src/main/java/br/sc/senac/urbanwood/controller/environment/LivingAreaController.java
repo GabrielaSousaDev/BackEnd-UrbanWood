@@ -1,21 +1,14 @@
 package br.sc.senac.urbanwood.controller.environment;
 
-import br.sc.senac.urbanwood.dto.living_area.LivingAreaDTO;
-import br.sc.senac.urbanwood.projection.living_area.LivingAreaProjection;
-import br.sc.senac.urbanwood.projection.living_area.screen.LivingAreaProjectionC16;
-import br.sc.senac.urbanwood.service.environment.EnvironmentService;
-
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/livingArea")
 public class LivingAreaController {
-
+/*
     private final EnvironmentService livingAreaService;
 
     public LivingAreaController(EnvironmentService livingAreaService) {
@@ -53,11 +46,12 @@ public class LivingAreaController {
       Screen    |||
       Screen    |||
       Screen    vvv
-     */
+     
 
     //Approved
     @GetMapping("c16")
     public ResponseEntity<List<LivingAreaProjectionC16>> getProjectionC16OrderByName() {
         return ResponseEntity.status(HttpStatus.OK).body(livingAreaService.findC16OrderByName());
     }
+    */
 }

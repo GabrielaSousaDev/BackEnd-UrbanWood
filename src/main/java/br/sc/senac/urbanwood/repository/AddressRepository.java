@@ -13,11 +13,11 @@ import br.sc.senac.urbanwood.projection.ProfileWoodworkForEditProjection;
 
 @Repository
 public interface AddressRepository extends JpaRepository<Address, Long>{
-
+/*
 	Optional<AddressProjection> findAddressById(Long id);
 
     boolean existsByStreetAndNumber(String street, Integer number);
     
     List<ProfileWoodworkForEditProjection> findByWoodworkNeighborhood(String neighborhood);
-
+*/
 }

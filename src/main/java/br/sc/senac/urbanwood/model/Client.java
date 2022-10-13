@@ -23,21 +23,17 @@ import lombok.NoArgsConstructor;
 @Table(name="client")
 public class Client extends User{
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id_client")
-	private Long id;
 	
-	@Column(name="cpf_client")
+	@Column(name="cpf_client", length = 15, nullable = false, unique = true)
 	private String cpf;
 	
-	@Column(name="first_name_client")
+	@Column(name="first_name_client", nullable = false)
 	private String firstName;
 	
-	@Column(name="last_name_client")
+	@Column(name="last_name_client", nullable = false)
 	private String lastName;
 	
-	@OneToMany(mappedBy = "order")
+	@OneToMany(mappedBy = "client")
 	private List<Order> order;
 	
 }

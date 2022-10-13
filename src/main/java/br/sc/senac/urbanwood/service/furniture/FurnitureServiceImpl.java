@@ -1,25 +1,10 @@
 package br.sc.senac.urbanwood.service.furniture;
 
-import br.sc.senac.urbanwood.dto.furniture.FurnitureDTO;
-import br.sc.senac.urbanwood.exception.furniture.FurnitureInvalidException;
-import br.sc.senac.urbanwood.exception.furniture.FurnitureNameRegisteredException;
-import br.sc.senac.urbanwood.exception.furniture.FurnitureNotFoundException;
-import br.sc.senac.urbanwood.exception.living_area.LivingAreaNotFoundException;
-import br.sc.senac.urbanwood.mapper.furniture.FurnitureMapper;
-import br.sc.senac.urbanwood.model.furniture.Furniture;
-import br.sc.senac.urbanwood.model.living_area.LivingArea;
-import br.sc.senac.urbanwood.projection.furniture.FurnitureProjection;
-import br.sc.senac.urbanwood.projection.furniture.screen.FurnitureProjectionC14;
-import br.sc.senac.urbanwood.projection.furniture.screen.FurnitureProjectionC15;
-import br.sc.senac.urbanwood.repository.furniture.FurnitureRepository;
-import br.sc.senac.urbanwood.repository.living_area.LivingAreaRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class FurnitureServiceImpl implements FurnitureService {
-
+/*
     private final FurnitureRepository furnitureRepository;
     private final FurnitureMapper furnitureMapper;
     private final LivingAreaRepository livingAreaRepository;
@@ -114,5 +99,5 @@ public class FurnitureServiceImpl implements FurnitureService {
         if(furniture.isEmpty())
             throw new FurnitureNotFoundException("Was not found");
         return furniture;
-    }
+    }*/
 }

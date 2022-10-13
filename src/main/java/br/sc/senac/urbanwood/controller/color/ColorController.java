@@ -1,19 +1,14 @@
 package br.sc.senac.urbanwood.controller.color;
 
-import br.sc.senac.urbanwood.dto.color.ColorDTO;
-import br.sc.senac.urbanwood.projection.color.ColorProjection;
-import br.sc.senac.urbanwood.service.color.ColorService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/color")
 public class ColorController {
-
+/*
     private final ColorService colorService;
 
     public ColorController(ColorService colorService) {
@@ -50,5 +45,5 @@ public class ColorController {
     @GetMapping("brand/{brand}")
     public ResponseEntity<List<ColorProjection>> getProjectionByBrand(@PathVariable(value = "brand") String brand) {
         return ResponseEntity.status(HttpStatus.OK).body(colorService.findByBrand(brand));
-    }
+    }*/
 }

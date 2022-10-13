@@ -1,11 +1,11 @@
 package br.sc.senac.urbanwood.repository;
 
-import javax.persistence.Id;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import br.sc.senac.urbanwood.model.Order;
 @Repository
-public interface OrderRepository extends JpaRepository<Long, Id>{
+public interface OrderRepository extends JpaRepository<Order, Long>{
 
 	
 

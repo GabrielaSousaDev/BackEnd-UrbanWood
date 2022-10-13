@@ -1,30 +1,10 @@
 package br.sc.senac.urbanwood.service.order;
 
-import br.sc.senac.urbanwood.dto.order.OrderCreateDTO;
-import br.sc.senac.urbanwood.dto.order.OrderDTO;
-import br.sc.senac.urbanwood.exception.order.OrderInvalidException;
-import br.sc.senac.urbanwood.exception.order.OrderNotFoundException;
-import br.sc.senac.urbanwood.mapper.order.OrderMapper;
-import br.sc.senac.urbanwood.model.furniture.Furniture;
-import br.sc.senac.urbanwood.model.order.Order;
-import br.sc.senac.urbanwood.projection.order.OrderProjection;
-import br.sc.senac.urbanwood.projection.order.screen.OrderProjectionW12;
-import br.sc.senac.urbanwood.projection.order.screen.OrderProjectionW13;
-import br.sc.senac.urbanwood.repository.furniture.FurnitureRepository;
-import br.sc.senac.urbanwood.repository.order.OrderRepository;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class OrderServiceImpl implements OrderService {
-
+/*
     private final OrderRepository orderRepository;
     private final FurnitureRepository furnitureRepository;
     private final OrderMapper orderMapper;
@@ -110,5 +90,5 @@ public class OrderServiceImpl implements OrderService {
     public OrderProjectionW13 findW13ById(Long id) {
         return orderRepository.findOrderW13ById(id)
                 .orElseThrow(() -> new OrderNotFoundException("Order " + id + " was not found"));
-    }
+    }*/
 }

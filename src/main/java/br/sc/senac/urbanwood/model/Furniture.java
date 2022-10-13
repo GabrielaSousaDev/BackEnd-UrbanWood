@@ -2,12 +2,16 @@ package br.sc.senac.urbanwood.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -32,7 +36,6 @@ public class Furniture {
 	
 	@Column(name="price_furniture")
 	private Double price;
-	
 
 	@Column(name="description_furniture")
 	private String description;
@@ -40,28 +43,16 @@ public class Furniture {
 	@Column(name="furniture_size_furniture")
 	private Double furnitureSize;
 
-	@OneToOne(mappedBy = "image")
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_image", nullable = false)
 	private Image image;
 	
-	@OneToMany(mappedBy = "color")
-	private List<Color> color;
+	@ManyToMany
+	@JoinTable(name = "furniture_color", joinColumns = @JoinColumn(name = "furniture_id"),
+	inverseJoinColumns = @JoinColumn(name = "color_id"))
+	private List<Color> colors;
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@ManyToOne
+	@JoinColumn(name = "id_environment", nullable = false)
+	private Environment environment;
 }

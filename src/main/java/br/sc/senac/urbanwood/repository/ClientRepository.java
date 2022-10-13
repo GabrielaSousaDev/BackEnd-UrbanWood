@@ -1,12 +1,12 @@
 package br.sc.senac.urbanwood.repository;
 
-import javax.persistence.Id;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import br.sc.senac.urbanwood.model.Client;
 @Repository
-public interface  ClientRepository  extends JpaRepository<Long, Id>{
-	
+public interface  ClientRepository  extends JpaRepository<Client, Long>{
+	/*
 	boolean existsByCpf(String cpf);
 
     boolean existsByLogin(String login);

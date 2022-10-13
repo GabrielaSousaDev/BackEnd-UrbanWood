@@ -7,7 +7,7 @@ import br.sc.senac.urbanwood.projection.AddressProjection;
 import br.sc.senac.urbanwood.projection.ProfileWoodworkForEditProjection;
 
 public interface AddressService {
-
+/*
     AddressDTO save(AddressDTO addressDTO);
 
     void update(AddressDTO addressDTO, Long id);
@@ -19,5 +19,5 @@ public interface AddressService {
     List<ProfileWoodworkForEditProjection> findByWoodworkNeighborhood(String neighborhood);
 
 
-    
+    */
 }

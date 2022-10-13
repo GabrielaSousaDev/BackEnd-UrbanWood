@@ -1,25 +1,15 @@
 package br.sc.senac.urbanwood.controller.order;
 
-import br.sc.senac.urbanwood.dto.order.OrderCreateDTO;
-import br.sc.senac.urbanwood.dto.order.OrderDTO;
-import br.sc.senac.urbanwood.projection.order.OrderProjection;
-import br.sc.senac.urbanwood.projection.order.screen.OrderProjectionW12;
-import br.sc.senac.urbanwood.projection.order.screen.OrderProjectionW13;
-import br.sc.senac.urbanwood.service.order.OrderService;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDate;
-import java.util.List;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/order")
 public class OrderController {
 
+	/*
     private final OrderService orderService;
 
     public OrderController(OrderService orderService) {
@@ -58,7 +48,7 @@ public class OrderController {
       Screen    |||
       Screen    |||
       Screen    vvv
-     */
+     
 
     //Approved
     @GetMapping("w12/{page}")
@@ -71,4 +61,5 @@ public class OrderController {
     public ResponseEntity<OrderProjectionW13> getProjectionW13ById(@PathVariable(value = "id") Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(orderService.findW13ById(id));
     }
+    */
 }

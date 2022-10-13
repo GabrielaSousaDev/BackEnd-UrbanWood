@@ -1,12 +1,7 @@
 package br.sc.senac.urbanwood.service.user;
 
-import java.util.Optional;
-
-import br.sc.senac.urbanwood.dto.UserDTO;
-import br.sc.senac.urbanwood.projection.UserProjection;
-
 public interface UserService {
-
+/*
 	UserDTO save(UserDTO userDTO);
 
 	void update(UserDTO userDTO, Long id);
@@ -17,5 +12,5 @@ public interface UserService {
 
 	boolean existsByLogin(String login);
 
-	Optional<UserProjection> findById(Long id);
+	Optional<UserProjection> findById(Long id);*/
 }

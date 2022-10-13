@@ -2,19 +2,9 @@ package br.sc.senac.urbanwood.service.woodwork;
 
 import org.springframework.stereotype.Service;
 
-import antlr.collections.List;
-import br.sc.senac.urbanwood.dto.WoodworkDTO;
-import br.sc.senac.urbanwood.exception.woodwork.WoodworkCnpjRegisteredException;
-import br.sc.senac.urbanwood.exception.woodwork.WoodworkNotFoundException;
-import br.sc.senac.urbanwood.mapper.WoodworkMapper;
-import br.sc.senac.urbanwood.model.Woodwork;
-import br.sc.senac.urbanwood.projection.ProfileWoodworkForEditProjection;
-import br.sc.senac.urbanwood.projection.ProfileWoodworkFullEditProjection;
-import br.sc.senac.urbanwood.repository.WoodworkRepository;
-
 @Service
 public class WoodworkServiceImpl implements WoodworkService {
-
+/*
 	private final WoodworkRepository woodworkRepository;
 	private final WoodworkMapper woodworkMapper;
 
@@ -81,6 +71,6 @@ public class WoodworkServiceImpl implements WoodworkService {
 	}
 
 
-
+*/
 	
 }

@@ -1,10 +1,12 @@
 package br.sc.senac.urbanwood.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -24,7 +26,8 @@ public class User {
 	@Column(name="id_user")
 	private Long id;
 
-	@OneToOne(mappedBy = "image")
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_image", nullable = false)
 	private Image image;
 	
 	@Column(name="login_user")
@@ -33,11 +36,12 @@ public class User {
 	@Column(name="password_user")
 	private String password;
 	
-	@OneToOne(mappedBy = "address")
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_address", nullable = false)
 	private Address address;
 	
-	@OneToOne(mappedBy = "contact")
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_contact", nullable = false)
 	private Contact contact;
 	
-
 }

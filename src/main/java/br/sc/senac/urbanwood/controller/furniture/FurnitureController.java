@@ -1,21 +1,14 @@
 package br.sc.senac.urbanwood.controller.furniture;
 
-import br.sc.senac.urbanwood.dto.furniture.FurnitureDTO;
-import br.sc.senac.urbanwood.projection.furniture.FurnitureProjection;
-import br.sc.senac.urbanwood.projection.furniture.screen.FurnitureProjectionC14;
-import br.sc.senac.urbanwood.projection.furniture.screen.FurnitureProjectionC15;
-import br.sc.senac.urbanwood.service.furniture.FurnitureService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/furniture")
 public class FurnitureController {
-
+	/*
     private final FurnitureService furnitureService;
 
     public FurnitureController(FurnitureService furnitureService) {
@@ -58,7 +51,7 @@ public class FurnitureController {
       Screen    |||
       Screen    |||
       Screen    vvv
-     */
+     
 
     //Approved
     @GetMapping("c14/{id}")
@@ -71,4 +64,5 @@ public class FurnitureController {
     public ResponseEntity<List<FurnitureProjectionC15>> getProjectionC15OrderByName() {
         return ResponseEntity.status(HttpStatus.OK).body(furnitureService.findC15OrderByNameFurniture());
     }
+    */
 }

@@ -1,9 +1,6 @@
 package br.sc.senac.urbanwood.repository;
 
 import java.util.List;
-import java.util.Optional;
-
-import javax.persistence.Id;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -13,9 +10,8 @@ import br.sc.senac.urbanwood.model.Environment;
 import br.sc.senac.urbanwood.projection.EnvironmentProjection;
 
 @Repository
-public interface EnvironmentRepository extends JpaRepository<Long, Id> {
-
-	Optional<EnvironmentProjection> findById(Long id);
+public interface EnvironmentRepository extends JpaRepository<Environment, Long> {
+/*
 
 	EnvironmentDTO save(EnvironmentDTO livingAreaDTO);
 
@@ -25,11 +21,6 @@ public interface EnvironmentRepository extends JpaRepository<Long, Id> {
 
 	Environment save(Environment environment1);
 
-	static boolean existsById(Long id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 	List<EnvironmentProjection> listByWoodworkById(Long id);
-
+*/
 }

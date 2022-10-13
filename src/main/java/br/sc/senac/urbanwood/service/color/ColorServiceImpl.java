@@ -1,22 +1,10 @@
 package br.sc.senac.urbanwood.service.color;
 
-import java.util.List;
-
 import org.springframework.stereotype.Service;
-
-import br.sc.senac.urbanwood.dto.ColorDTO;
-import br.sc.senac.urbanwood.exception.color.ColorNotFoundException;
-import br.sc.senac.urbanwood.exception.furniture.FurnitureNotFoundException;
-import br.sc.senac.urbanwood.mapper.ColorMapper;
-import br.sc.senac.urbanwood.model.Color;
-import br.sc.senac.urbanwood.model.Furniture;
-import br.sc.senac.urbanwood.projection.ColorProjection;
-import br.sc.senac.urbanwood.repository.ColorRepository;
-import br.sc.senac.urbanwood.repository.FurnitureRepository;
 
 @Service
 public class ColorServiceImpl implements ColorService {
-
+/*
     private final ColorRepository colorRepository;
     private final ColorMapper colorMapper;
     private final FurnitureRepository furnitureRepository;
@@ -73,5 +61,5 @@ public class ColorServiceImpl implements ColorService {
         if(color.isEmpty())
             throw new ColorNotFoundException("Brand " + brand + " was not found");
         return color;
-    }
+    }*/
 }

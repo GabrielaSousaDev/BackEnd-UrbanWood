@@ -23,12 +23,12 @@ public class Contact {
 	@Column(name="id_contact")
 	private Long id;
 	
-	@Column(name="email_contact")
+	@Column(name="email_contact", length = 45, nullable = false, unique = true)
 	private String email;
 	
-	@Column(name="phone_number_contact")
+	@Column(name="phone_number_contact", length = 30, nullable = false, unique = true)
 	private String phoneNumber;
 	
-	@Column(name="net_work_contact")
+	@Column(name="net_work_contact", length = 45)
 	private String netWork;
 }
