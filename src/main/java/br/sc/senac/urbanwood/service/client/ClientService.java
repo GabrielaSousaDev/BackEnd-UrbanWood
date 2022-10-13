@@ -2,12 +2,14 @@ package br.sc.senac.urbanwood.service.client;
 
 import org.springframework.stereotype.Service;
 
+import br.sc.senac.urbanwood.dto.client.AllClientDTO;
+
 @Service
 public interface ClientService {
 
-    /*ClientDTO save(ClientDTO clientDTO);
+    AllClientDTO save(AllClientDTO dto);
 
-    void update(ClientDTO clientDTO, Long id);
+    /*void update(ClientDTO clientDTO, Long id);
 
     void delete(Long id);
 

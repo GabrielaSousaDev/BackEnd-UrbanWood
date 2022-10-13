@@ -1,14 +1,22 @@
 package br.sc.senac.urbanwood.controller.client;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import br.sc.senac.urbanwood.dto.ClientDTO;
+import br.sc.senac.urbanwood.dto.client.AllClientDTO;
+import br.sc.senac.urbanwood.service.client.ClientService;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/client")
 public class ClientController {
-/*
+
     private final ClientService clientService;
 
     public ClientController(ClientService clientService) {
@@ -16,10 +24,10 @@ public class ClientController {
     }
 
     @PostMapping
-    public ResponseEntity<ClientDTO> addClient(@RequestBody ClientDTO clientDTO) {
+    public ResponseEntity<AllClientDTO> addClient(@RequestBody ClientDTO clientDTO) {
         return ResponseEntity.status(HttpStatus.CREATED).body(clientService.save(clientDTO));
     }
-
+/*
     @PutMapping("/{id}")
     public ResponseEntity<String> updateClient(@RequestBody ClientDTO clientDTO, @PathVariable(value = "id") Long id) {
         clientService.update(clientDTO, id);

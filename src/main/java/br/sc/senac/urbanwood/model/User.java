@@ -27,7 +27,7 @@ public class User {
 	private Long id;
 
 	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_image", nullable = false)
+    @JoinColumn(name = "id_image", nullable = true)
 	private Image image;
 	
 	@Column(name="login_user")

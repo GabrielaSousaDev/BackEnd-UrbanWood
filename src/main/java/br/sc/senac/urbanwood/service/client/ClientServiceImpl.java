@@ -2,9 +2,17 @@ package br.sc.senac.urbanwood.service.client;
 
 import org.springframework.stereotype.Service;
 
+import br.sc.senac.urbanwood.dto.client.AllClientDTO;
+import br.sc.senac.urbanwood.mapper.ClientMapper;
+import br.sc.senac.urbanwood.model.Address;
+import br.sc.senac.urbanwood.model.Contact;
+import br.sc.senac.urbanwood.repository.AddressRepository;
+import br.sc.senac.urbanwood.repository.ClientRepository;
+import br.sc.senac.urbanwood.repository.ContactRepository;
+
 @Service
 public class ClientServiceImpl implements ClientService {
-/*
+
     private final ClientRepository clientRepository;
     private final ClientMapper clientMapper;
     private final ContactRepository contactRepository;
@@ -17,30 +25,18 @@ public class ClientServiceImpl implements ClientService {
         this.addressRepository = addressRepository;
     }
 
-    public ClientDTO save(ClientDTO clientDTO) {
+    public AllClientDTO save(AllClientDTO dto) {
 
-        Contact contact = contactRepository.findById(clientDTO.idContact())
-                .orElseThrow(() -> new ContactNotFoundException("Contact " + clientDTO.idContact() + " was not found"));
-
-        Address address = addressRepository.findById(clientDTO.idAddress())
-                .orElseThrow(() -> new AddressNotFoundException("Address " + clientDTO.idAddress() + " was not found"));
-
-        if (clientRepository.existsByCpf(clientDTO.cpf()))
-            throw new ClientCpfRegisteredException("Cpf " + clientDTO.cpf() + " is already registered");
-
-        if (clientRepository.existsByLogin(clientDTO.login()))
-            throw new ClientLoginRegisteredException("Login " + clientDTO.login() + " is already registered");
-
-        if (CPFValidator.isCPF(clientDTO.cpf()))
-            throw new ClientCpfInvalidException("Cpf " + clientDTO.cpf() + " is invalid");
-
-        Client client = clientMapper.toEntity(clientDTO);
-        client.setContact(contact);
-        client.setAddress(address);
-        Client clientSaved = clientRepository.save(client);
-        return clientMapper.toDTO(clientSaved);
+    	Contact contact = new Contact(dto.idClient(), dto.email(), dto.phone(), dto.socialNetwork());
+    	Contact contactSaved = contactRepository.save(contact);
+    	
+    	Address address = new Address(dto.idClient(), dto.nameStreet(), dto.number(), dto.neighborhood(), dto.complement(), dto.city(), dto.cep());
+    	Address addressSaved = addressRepository.save(address);
+    	
+    	Client client = new Client(dto.idClient(), null, dto.login,);
+        
     }
-
+/*
     public void update(ClientDTO clientDTO, Long id) {
 
         Client client = clientRepository.findById(id)
