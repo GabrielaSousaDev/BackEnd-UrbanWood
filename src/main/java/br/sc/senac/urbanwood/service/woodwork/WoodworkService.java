@@ -2,12 +2,14 @@ package br.sc.senac.urbanwood.service.woodwork;
 
 import org.springframework.stereotype.Service;
 
+import br.sc.senac.urbanwood.dto.woodwork.AllWoodworkDTO;
+
 @Service
 public interface WoodworkService {
-/*
-    WoodworkDTO save(WoodworkDTO woodworkDTO);
 
-    void update(WoodworkDTO woodworkDTO, Long id);
+    AllWoodworkDTO save(AllWoodworkDTO dto);
+
+/*    void update(WoodworkDTO woodworkDTO, Long id);
 
     void delete(Long id);
 

@@ -2,28 +2,53 @@ package br.sc.senac.urbanwood.service.woodwork;
 
 import org.springframework.stereotype.Service;
 
+import br.sc.senac.urbanwood.dto.WoodworkDTO;
+import br.sc.senac.urbanwood.dto.woodwork.AllWoodworkDTO;
+import br.sc.senac.urbanwood.exception.woodwork.WoodworkCnpjRegisteredException;
+import br.sc.senac.urbanwood.mapper.WoodworkMapper;
+import br.sc.senac.urbanwood.model.Address;
+import br.sc.senac.urbanwood.model.Client;
+import br.sc.senac.urbanwood.model.Contact;
+import br.sc.senac.urbanwood.model.User;
+import br.sc.senac.urbanwood.model.Woodwork;
+import br.sc.senac.urbanwood.repository.AddressRepository;
+import br.sc.senac.urbanwood.repository.ContactRepository;
+import br.sc.senac.urbanwood.repository.UserRepository;
+import br.sc.senac.urbanwood.repository.WoodworkRepository;
+
 @Service
 public class WoodworkServiceImpl implements WoodworkService {
-/*
+
 	private final WoodworkRepository woodworkRepository;
 	private final WoodworkMapper woodworkMapper;
+	private final ContactRepository contactRepository;
+    private final AddressRepository addressRepository;
+    private final UserRepository userRepository;
 
-	public WoodworkServiceImpl(WoodworkRepository woodworkRepository, WoodworkMapper woodworkMapper) {
+	public WoodworkServiceImpl(WoodworkRepository woodworkRepository, WoodworkMapper woodworkMapper,ContactRepository contactRepository, AddressRepository addressRepository, UserRepository userRepository) {
 		this.woodworkRepository = woodworkRepository;
 		this.woodworkMapper = woodworkMapper;
+		this.contactRepository = contactRepository;
+        this.addressRepository = addressRepository;
+        this.userRepository = userRepository;
 	}
 
-	public WoodworkDTO save(WoodworkDTO woodworkDTO) {
+	public AllWoodworkDTO save(AllWoodworkDTO dto) {
 
-		if (woodworkRepository.existsByCnpj(woodworkDTO.cpnj()))
-			throw new WoodworkCnpjRegisteredException("Cnpj " + woodworkDTO.cpnj() + " is already registered");
-
-		Woodwork woodwork = woodworkMapper.toEntity(woodworkDTO);
-		Woodwork woodworkSaved = woodworkRepository.save(woodwork);
-		return woodworkMapper.toDTO(woodworkSaved);
+		Contact contact = new Contact(dto.idWoodwork(), dto.email(), dto.phone(), dto.socialNetwork());
+    	Contact contactSaved = contactRepository.save(contact);
+    	
+    	Address address = new Address(dto.idWoodwork(), dto.nameStreet(), dto.number(), dto.neighborhood(), dto.complement(), dto.city(), dto.cep());
+    	Address addressSaved = addressRepository.save(address);
+    	
+    	Woodwork woodwork = new Woodwork(dto.idWoodwork(), dto.companyName(), dto.cnpj(), dto.description());
+    	Woodwork woodworkSaved = woodworkRepository.save(woodwork);
+    	
+    	User user = new User(dto.idWoodwork(), dto.login(), dto.password());
+    	User userSaved = userRepository.save(user);
 	}
 
-	public void update(WoodworkDTO woodworkDTO, Long id) {
+	/*public void update(WoodworkDTO woodworkDTO, Long id) {
 
 		Woodwork woodwork = woodworkRepository.findById(id)
 				.orElseThrow(() -> new WoodworkNotFoundException("Woodwork " + id + " was not found"));

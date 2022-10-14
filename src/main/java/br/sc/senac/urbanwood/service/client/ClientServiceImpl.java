@@ -7,9 +7,11 @@ import br.sc.senac.urbanwood.mapper.ClientMapper;
 import br.sc.senac.urbanwood.model.Address;
 import br.sc.senac.urbanwood.model.Client;
 import br.sc.senac.urbanwood.model.Contact;
+import br.sc.senac.urbanwood.model.User;
 import br.sc.senac.urbanwood.repository.AddressRepository;
 import br.sc.senac.urbanwood.repository.ClientRepository;
 import br.sc.senac.urbanwood.repository.ContactRepository;
+import br.sc.senac.urbanwood.repository.UserRepository;
 
 @Service
 public class ClientServiceImpl implements ClientService {
@@ -18,12 +20,14 @@ public class ClientServiceImpl implements ClientService {
     private final ClientMapper clientMapper;
     private final ContactRepository contactRepository;
     private final AddressRepository addressRepository;
+    private final UserRepository userRepository;
 
-    public ClientServiceImpl(ClientRepository clientRepository, ClientMapper clientMapper, ContactRepository contactRepository, AddressRepository addressRepository) {
+    public ClientServiceImpl(ClientRepository clientRepository, ClientMapper clientMapper, ContactRepository contactRepository, AddressRepository addressRepository, UserRepository userRepository) {
         this.clientRepository = clientRepository;
         this.clientMapper = clientMapper;
         this.contactRepository = contactRepository;
         this.addressRepository = addressRepository;
+        this.userRepository = userRepository;
     }
 
     public AllClientDTO save(AllClientDTO dto) {
@@ -37,10 +41,9 @@ public class ClientServiceImpl implements ClientService {
     	Client client = new Client(dto.idClient(), dto.firstName(), dto.lastName(), dto.cpfClient());
     	Client clientSaved = clientRepository.save(client);
     	
-    	return dto;
+    	User user = new User(dto.idClient(), dto.login(), dto.password());
+    	User userSaved = userRepository.save(user);
     	
-    	
-        
     }
 /*
     public void update(ClientDTO clientDTO, Long id) {
