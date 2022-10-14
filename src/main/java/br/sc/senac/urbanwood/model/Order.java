@@ -63,5 +63,4 @@ public class Order {
 	@JoinTable(name = "furniture_order", joinColumns = @JoinColumn(name = "id_order"),
 	inverseJoinColumns = @JoinColumn(name = "id_furniture"))
 	private List<Furniture> furnitures;
-
 }
