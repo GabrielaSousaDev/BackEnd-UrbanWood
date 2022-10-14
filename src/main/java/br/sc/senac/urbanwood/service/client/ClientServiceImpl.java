@@ -1,5 +1,7 @@
 package br.sc.senac.urbanwood.service.client;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import br.sc.senac.urbanwood.dto.client.AllClientDTO;
@@ -8,6 +10,7 @@ import br.sc.senac.urbanwood.mapper.ClientMapper;
 import br.sc.senac.urbanwood.model.Address;
 import br.sc.senac.urbanwood.model.Client;
 import br.sc.senac.urbanwood.model.Contact;
+import br.sc.senac.urbanwood.projection.client.ClientProjection;
 import br.sc.senac.urbanwood.repository.AddressRepository;
 import br.sc.senac.urbanwood.repository.ClientRepository;
 import br.sc.senac.urbanwood.repository.ContactRepository;
@@ -45,13 +48,29 @@ public class ClientServiceImpl implements ClientService {
     			client.getAddress().getNeighborhood(), client.getAddress().getComplement(), client.getAddress().getCity(), client.getAddress().getCep(), client.getContact().getEmail(), 
     			client.getContact().getNetWork(), client.getContact().getPhoneNumber(),client.getLogin(),client.getPassword());
        	
-    		   }
+	}
+	
+	public void update(AllClientDTO dto, Long id) {
+		
+	}
+	
 	public void delete(Long id) {
 
 		if (!clientRepository.existsById(id)) 
 			throw new ClientNotFoundException("Client " + id + " was not found");
 		
 		 clientRepository.deleteById(id);
+	}
+	
+	public AllClientDTO findById(Long id) { 
+		Client client = clientRepository.findById(id).orElseThrow(() -> new ClientNotFoundException("Client " + id + " was not found")); 
+		return new AllClientDTO(client.getId(), client.getFirstName(),client.getLastName(),client.getCpf(),client.getAddress().getStreetName(), client.getAddress().getNumber(), 
+    			client.getAddress().getNeighborhood(), client.getAddress().getComplement(), client.getAddress().getCity(), client.getAddress().getCep(), client.getContact().getEmail(), 
+    			client.getContact().getNetWork(), client.getContact().getPhoneNumber(),client.getLogin(),client.getPassword());
+	}
+	
+	public List<ClientProjection> findAll() {
+		return clientRepository.findClients();
 	}
 	/*
 	 * public void update(ClientDTO clientDTO, Long id) {

@@ -1,9 +1,12 @@
 package br.sc.senac.urbanwood.controller.client;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.sc.senac.urbanwood.dto.client.AllClientDTO;
+import br.sc.senac.urbanwood.projection.client.ClientProjection;
 import br.sc.senac.urbanwood.service.client.ClientService;
 
 @RestController
@@ -42,10 +46,15 @@ public class ClientController {
         clientService.delete(id);
         return ResponseEntity.status(HttpStatus.OK).body("Client deleted successfully");
     }
-/*
+
     @GetMapping("/{id}")
-    public ResponseEntity<ProfileClientForEditProjection> getProjectionById(@PathVariable(value = "id") Long id) {
+    public ResponseEntity<AllClientDTO> getClientById(@PathVariable(value = "id") Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(clientService.findById(id));
+    }
+    
+    @GetMapping()
+    public ResponseEntity<List<ClientProjection>> getClients() {
+        return ResponseEntity.status(HttpStatus.OK).body(clientService.findAll());
     }
 /*
     @GetMapping("cpf/{cpf}")

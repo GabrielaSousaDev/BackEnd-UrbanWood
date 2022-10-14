@@ -1,9 +1,13 @@
 package br.sc.senac.urbanwood.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import br.sc.senac.urbanwood.model.Client;
+import br.sc.senac.urbanwood.projection.client.ClientProjection;
 @Repository
 public interface  ClientRepository  extends JpaRepository<Client, Long>{
 	/*
@@ -23,5 +27,6 @@ public interface  ClientRepository  extends JpaRepository<Client, Long>{
     
     //Page<ClientProjectionW9> findClientW9ByNameClient(Pageable pageable);
 
-    
+	@Query(value = "SELECT c.cpf AS cpf, c.firstName AS firstName, c.lastName AS lastName FROM Client c")
+	List<ClientProjection> findClients();
 }
