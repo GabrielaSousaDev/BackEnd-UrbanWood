@@ -72,7 +72,7 @@ public class WoodworkServiceImpl implements WoodworkService {
 	}
 
 	public List<WoodworkProjection> findAll() {
-		return woodworkRepository.findWoodworks();
+		return null;
 	}
 
 	public void update(WoodworkDTO woodworkDTO, Long id) {
