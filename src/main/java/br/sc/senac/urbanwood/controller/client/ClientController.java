@@ -3,12 +3,13 @@ package br.sc.senac.urbanwood.controller.client;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.sc.senac.urbanwood.dto.ClientDTO;
 import br.sc.senac.urbanwood.dto.client.AllClientDTO;
 import br.sc.senac.urbanwood.service.client.ClientService;
 
@@ -33,13 +34,15 @@ public class ClientController {
         clientService.update(clientDTO, id);
         return ResponseEntity.status(HttpStatus.OK).body("Client updated successfully");
     }
+    
+    */
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteClient(@PathVariable(value = "id") Long id) {
         clientService.delete(id);
         return ResponseEntity.status(HttpStatus.OK).body("Client deleted successfully");
     }
-
+/*
     @GetMapping("/{id}")
     public ResponseEntity<ProfileClientForEditProjection> getProjectionById(@PathVariable(value = "id") Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(clientService.findById(id));

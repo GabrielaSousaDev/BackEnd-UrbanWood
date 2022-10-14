@@ -3,18 +3,14 @@ package br.sc.senac.urbanwood.service.client;
 import org.springframework.stereotype.Service;
 
 import br.sc.senac.urbanwood.dto.client.AllClientDTO;
-import br.sc.senac.urbanwood.dto.woodwork.AllWoodworkDTO;
+import br.sc.senac.urbanwood.exception.client.ClientNotFoundException;
 import br.sc.senac.urbanwood.mapper.ClientMapper;
 import br.sc.senac.urbanwood.model.Address;
 import br.sc.senac.urbanwood.model.Client;
 import br.sc.senac.urbanwood.model.Contact;
-import br.sc.senac.urbanwood.model.Image;
-import br.sc.senac.urbanwood.model.User;
-import br.sc.senac.urbanwood.model.Woodwork;
 import br.sc.senac.urbanwood.repository.AddressRepository;
 import br.sc.senac.urbanwood.repository.ClientRepository;
 import br.sc.senac.urbanwood.repository.ContactRepository;
-import br.sc.senac.urbanwood.repository.UserRepository;
 
 @Service
 public class ClientServiceImpl implements ClientService {
@@ -50,6 +46,13 @@ public class ClientServiceImpl implements ClientService {
     			client.getContact().getNetWork(), client.getContact().getPhoneNumber(),client.getLogin(),client.getPassword());
        	
     		   }
+	public void delete(Long id) {
+
+		if (!clientRepository.existsById(id)) 
+			throw new ClientNotFoundException("Client " + id + " was not found");
+		
+		 clientRepository.deleteById(id);
+	}
 	/*
 	 * public void update(ClientDTO clientDTO, Long id) {
 	 * 
@@ -122,4 +125,5 @@ public class ClientServiceImpl implements ClientService {
 	 * clientRepository.findClientC7ById(id) .orElseThrow(() -> new
 	 * ClientNotFoundException("Client " + id + " was not found")); }
 	 */
+
 }

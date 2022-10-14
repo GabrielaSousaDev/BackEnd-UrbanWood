@@ -11,7 +11,7 @@ public interface ClientService {
 
     /*void update(ClientDTO clientDTO, Long id);
 
-    void delete(Long id);
+    */void delete(Long id);/*
 
     ProfileClientForEditProjection findById(Long id);
 

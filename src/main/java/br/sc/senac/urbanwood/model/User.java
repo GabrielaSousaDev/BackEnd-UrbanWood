@@ -40,7 +40,10 @@ public abstract class User {
     @JoinColumn(name = "id_contact", nullable = false)
 	private Contact contact;
 	
-	public User(Long id, Image image, String login, String password, Address address, Contact contact) {
+	protected User() {
+	}
+
+	protected User(Long id, Image image, String login, String password, Address address, Contact contact) {
 		super();
 		this.id = id;
 		this.image = image;

@@ -1,5 +1,6 @@
 package br.sc.senac.urbanwood.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -20,7 +21,6 @@ import lombok.NoArgsConstructor;
 @Table(name="client")
 public class Client extends User{
 	
-	
 	@Column(name="cpf_client", length = 15, nullable = false, unique = true)
 	private String cpf;
 	
@@ -31,18 +31,17 @@ public class Client extends User{
 	private String lastName;
 	
 	@OneToMany(mappedBy = "client")
-	private List<Order> order;
-	
-	
-	
+	private List<Order> order = new ArrayList<>();	
 
+	public Client() {
+	}
+	
 	public Client(Long id, Image image, String login, String password, Address address, Contact contact, String cpf,
 			String firstName, String lastName) {
 		super(id, image, login, password, address, contact);
 		this.cpf = cpf;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.order = order;
 	}
 		
 	public String getCpf() {
