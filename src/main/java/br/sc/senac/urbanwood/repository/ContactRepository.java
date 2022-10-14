@@ -14,9 +14,9 @@ public interface ContactRepository extends JpaRepository<Contact ,Long> {
 
 	Optional<ContactProjection> findContactById(Long id);
 	
-	boolean existsById(Long id);
-
 	boolean existsByEmail(String email);
+	
+	boolean existsByPhoneNumber(String phone);
 
 	//ContactProjection findByWoodworkPhoneNumber(String phoneNumberWoodwork);
 

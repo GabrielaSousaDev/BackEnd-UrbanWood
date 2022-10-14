@@ -5,7 +5,12 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import br.sc.senac.urbanwood.dto.client.AllClientDTO;
+import br.sc.senac.urbanwood.exception.address.AddressNotFoundException;
+import br.sc.senac.urbanwood.exception.client.ClientCpfRegisteredException;
 import br.sc.senac.urbanwood.exception.client.ClientNotFoundException;
+import br.sc.senac.urbanwood.exception.contact.ContactEmailRegisteredException;
+import br.sc.senac.urbanwood.exception.contact.ContactNotFoundException;
+import br.sc.senac.urbanwood.exception.contact.ContactPhoneNumberRegisteredException;
 import br.sc.senac.urbanwood.mapper.ClientMapper;
 import br.sc.senac.urbanwood.model.Address;
 import br.sc.senac.urbanwood.model.Client;
@@ -49,6 +54,30 @@ public class ClientServiceImpl implements ClientService {
 	
 	public void update(AllClientDTO dto, Long id) {
 		
+		Client client = clientRepository.findById(id).orElseThrow(() -> new ClientNotFoundException("Client " + id + " was not found"));
+		Contact contact = contactRepository.findById(id).orElseThrow(() -> new ContactNotFoundException("Contact " + id + " was not found"));
+		Address address = addressRepository.findById(id).orElseThrow(() -> new AddressNotFoundException("Client " + id + " was not found"));
+		
+		if(clientRepository.existsByCpf(dto.cpfClient()))
+			throw new ClientCpfRegisteredException("Cpf "+ dto.cpfClient() +" already registered.");
+			
+		if(contactRepository.existsByEmail(dto.email()))
+			throw new ContactEmailRegisteredException("Email "+ dto.email() +" already registered.");
+		
+		if(contactRepository.existsByPhoneNumber(dto.phone()))
+			throw new ContactPhoneNumberRegisteredException("Phone "+ dto.phone() +" already registered.");
+		
+		if(addressRepository.existsByCep(dto.cep()))
+			throw new AddressNotFoundException(null);
+			
+		client.setCpf(dto.cpfClient()); 
+		client.setLastName(dto.lastName());
+		client.setFirstName(dto.firstName());
+		contact.setEmail(dto.email());
+		contact.setPhoneNumber(dto.phone());
+		contact.setNetWork(dto.socialNetwork());
+		
+		clientRepository.save(client);
 	}
 	
 	public void delete(Long id) {

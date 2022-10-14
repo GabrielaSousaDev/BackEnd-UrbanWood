@@ -15,7 +15,7 @@ public class ClientMapper {
 	        return new AllClientDTO(client.getId(), client.getFirstName(),client.getLastName(),client.getCpf(),client.getAddress().getStreetName(), client.getAddress().getNumber(), 
 	    			client.getAddress().getNeighborhood(), client.getAddress().getComplement(), client.getAddress().getCity(), client.getAddress().getCep(), client.getContact().getEmail(), 
 	    			client.getContact().getNetWork(), client.getContact().getPhoneNumber(),client.getLogin(),client.getPassword());
-	    }
+	 }
 
 	    /*public Client toAllEntity(AllClientDTO dto) {
 	    	Contact contact = new Contact(dto.idClient(), dto.email(), dto.phone(), dto.socialNetwork());

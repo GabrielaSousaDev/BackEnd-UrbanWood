@@ -10,10 +10,10 @@ import br.sc.senac.urbanwood.model.Client;
 import br.sc.senac.urbanwood.projection.client.ClientProjection;
 @Repository
 public interface  ClientRepository  extends JpaRepository<Client, Long>{
-	/*
+
 	boolean existsByCpf(String cpf);
 
-    boolean existsByLogin(String login);
+    /*boolean existsByLogin(String login);
 
    
   /*  @Query(value = """

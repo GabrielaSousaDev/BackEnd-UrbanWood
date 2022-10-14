@@ -12,7 +12,7 @@ import br.sc.senac.urbanwood.projection.woodwork.WoodworkProjection;
 
 @Repository
 public interface WoodworkRepository extends JpaRepository<Woodwork, Long> {
-	
+	/*
 	@Query(value = "SELECT w.cnpj AS cnpj, w.companyName AS companyName, w.description AS description FROM woodwork w")
 	List<WoodworkProjection> findWoodworks();
 
