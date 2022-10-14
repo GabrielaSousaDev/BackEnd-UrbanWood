@@ -24,8 +24,8 @@ public class ClientController {
     }
 
     @PostMapping
-    public ResponseEntity<AllClientDTO> addClient(@RequestBody ClientDTO clientDTO) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(clientService.save(clientDTO));
+    public ResponseEntity<AllClientDTO> addClient(@RequestBody AllClientDTO dto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(clientService.save(dto));
     }
 /*
     @PutMapping("/{id}")
