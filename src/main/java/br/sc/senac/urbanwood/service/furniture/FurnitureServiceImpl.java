@@ -26,11 +26,12 @@ public class FurnitureServiceImpl implements FurnitureService {
 
     public AllFurnitureDTO save(AllFurnitureDTO dto) {
 
-    	Furniture furniture = new Furniture(dto.idFurniture(), dto.name(), dto.price(), dto.description(), dto.furnitureSize());
+    	/*Furniture furniture = new Furniture(dto.idFurniture(), dto.name(), dto.price(), dto.description(), dto.furnitureSize());
     	Furniture furnitureSaved = furnitureRepository.save(furniture);
     	
     	Color color = new List<Color>(dto.idColor());
-    	Color colorSaved = colorRepository.save(color);	
+    	Color colorSaved = colorRepository.save(color);	*/
+    	return new AllFurnitureDTO(null, null, null, null, null, null);
     }
 
    /* public void update(FurnitureDTO furnitureDTO, Long id) {
