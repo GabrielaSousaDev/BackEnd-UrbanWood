@@ -9,9 +9,10 @@ public interface WoodworkService {
 
     AllWoodworkDTO save(AllWoodworkDTO dto);
 
+    void delete(Long id);
 /*    void update(WoodworkDTO woodworkDTO, Long id);
 
-    void delete(Long id);
+   
 
     ProfileWoodworkFullEditProjection findById(Long id); 
 

@@ -3,6 +3,10 @@ package br.sc.senac.urbanwood.controller.woodwork;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +30,12 @@ public class WoodworkController {
     public ResponseEntity<AllWoodworkDTO> addWoodwork(@RequestBody AllWoodworkDTO dto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(woodworkService.save(dto));
     }
+   
+   @DeleteMapping("/{id}")
+   public ResponseEntity<String> deleteWoodwork(@PathVariable(value = "id") Long id) {
+       woodworkService.delete(id);
+       return ResponseEntity.status(HttpStatus.OK).body("Woodwork deleted successfully");
+   }
 
    /* @PutMapping("/{id}")
     public ResponseEntity<String> updateWoodwork(@RequestBody WoodworkDTO woodworkDTO, @PathVariable(value = "id") Long id) {
@@ -33,11 +43,7 @@ public class WoodworkController {
         return ResponseEntity.status(HttpStatus.OK).body("Woodwork updated successfully");
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteWoodwork(@PathVariable(value = "id") Long id) {
-        woodworkService.delete(id);
-        return ResponseEntity.status(HttpStatus.OK).body("Woodwork deleted successfully");
-    }
+    
 
     @GetMapping("/{id}")
     public ResponseEntity<ProfileWoodworkFullEditProjection> getProjectionById(@PathVariable(value = "id") Long id) {
