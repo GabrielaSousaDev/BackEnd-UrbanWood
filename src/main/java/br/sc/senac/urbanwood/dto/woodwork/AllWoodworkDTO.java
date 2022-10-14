@@ -4,4 +4,6 @@ public record AllWoodworkDTO(Long idWoodwork, String companyName, String cnpj, S
 		int number, String complement, String neighborhood, String city, String cep, String socialNetwork, 
 		String email, String phone, String login, String password) {
 
+	
+
 }

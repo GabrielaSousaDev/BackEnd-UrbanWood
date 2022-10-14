@@ -48,12 +48,7 @@ public class WoodworkServiceImpl implements WoodworkService {
 				dto.companyName(), dto.cnpj(), dto.description());
 		Woodwork woodworkSaved = woodworkRepository.save(woodwork);
 
-		return new AllWoodworkDTO(woodwork.getId(), woodwork.getCompanyName(), woodwork.getCnpj(),
-				woodwork.getDescription(), woodwork.getAddress().getStreetName(), woodwork.getAddress().getNumber(),
-				woodwork.getAddress().getComplement(), woodwork.getAddress().getNeighborhood(),
-				woodwork.getAddress().getCity(), woodwork.getAddress().getCep(), woodwork.getContact().getNetWork(),
-				woodwork.getContact().getEmail(), woodwork.getContact().getPhoneNumber(), woodwork.getLogin(),
-				woodwork.getPassword());
+		return woodworkMapper.toDTO(woodworkSaved);
 	}
 
 	public void delete(Long id) {
