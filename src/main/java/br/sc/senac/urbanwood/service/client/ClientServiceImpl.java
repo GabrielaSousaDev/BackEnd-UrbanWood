@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import br.sc.senac.urbanwood.dto.client.AllClientDTO;
 import br.sc.senac.urbanwood.mapper.ClientMapper;
 import br.sc.senac.urbanwood.model.Address;
+import br.sc.senac.urbanwood.model.Client;
 import br.sc.senac.urbanwood.model.Contact;
 import br.sc.senac.urbanwood.repository.AddressRepository;
 import br.sc.senac.urbanwood.repository.ClientRepository;
@@ -33,7 +34,12 @@ public class ClientServiceImpl implements ClientService {
     	Address address = new Address(dto.idClient(), dto.nameStreet(), dto.number(), dto.neighborhood(), dto.complement(), dto.city(), dto.cep());
     	Address addressSaved = addressRepository.save(address);
     	
-    	Client client = new Client(dto.idClient(), null, dto.login,);
+    	Client client = new Client(dto.idClient(), dto.firstName(), dto.lastName(), dto.cpfClient());
+    	Client clientSaved = clientRepository.save(client);
+    	
+    	return dto;
+    	
+    	
         
     }
 /*
