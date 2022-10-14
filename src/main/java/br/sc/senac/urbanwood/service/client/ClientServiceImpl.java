@@ -3,11 +3,14 @@ package br.sc.senac.urbanwood.service.client;
 import org.springframework.stereotype.Service;
 
 import br.sc.senac.urbanwood.dto.client.AllClientDTO;
+import br.sc.senac.urbanwood.dto.woodwork.AllWoodworkDTO;
 import br.sc.senac.urbanwood.mapper.ClientMapper;
 import br.sc.senac.urbanwood.model.Address;
 import br.sc.senac.urbanwood.model.Client;
 import br.sc.senac.urbanwood.model.Contact;
+import br.sc.senac.urbanwood.model.Image;
 import br.sc.senac.urbanwood.model.User;
+import br.sc.senac.urbanwood.model.Woodwork;
 import br.sc.senac.urbanwood.repository.AddressRepository;
 import br.sc.senac.urbanwood.repository.ClientRepository;
 import br.sc.senac.urbanwood.repository.ContactRepository;
@@ -16,21 +19,21 @@ import br.sc.senac.urbanwood.repository.UserRepository;
 @Service
 public class ClientServiceImpl implements ClientService {
 
-    private final ClientRepository clientRepository;
-    private final ClientMapper clientMapper;
-    private final ContactRepository contactRepository;
-    private final AddressRepository addressRepository;
-    private final UserRepository userRepository;
+	private final ClientRepository clientRepository;
+	private final ClientMapper clientMapper;
+	private final ContactRepository contactRepository;
+	private final AddressRepository addressRepository;
 
-    public ClientServiceImpl(ClientRepository clientRepository, ClientMapper clientMapper, ContactRepository contactRepository, AddressRepository addressRepository, UserRepository userRepository) {
-        this.clientRepository = clientRepository;
-        this.clientMapper = clientMapper;
-        this.contactRepository = contactRepository;
-        this.addressRepository = addressRepository;
-        this.userRepository = userRepository;
-    }
+	public ClientServiceImpl(ClientRepository clientRepository, ClientMapper clientMapper,
+			ContactRepository contactRepository, AddressRepository addressRepository) {
+		this.clientRepository = clientRepository;
+		this.clientMapper = clientMapper;
+		this.contactRepository = contactRepository;
+		this.addressRepository = addressRepository;
 
-    public AllClientDTO save(AllClientDTO dto) {
+	}
+
+	public AllClientDTO save(AllClientDTO dto) {
 
     	Contact contact = new Contact(dto.idClient(), dto.email(), dto.phone(), dto.socialNetwork());
     	Contact contactSaved = contactRepository.save(contact);
@@ -38,95 +41,85 @@ public class ClientServiceImpl implements ClientService {
     	Address address = new Address(dto.idClient(), dto.nameStreet(), dto.number(), dto.neighborhood(), dto.complement(), dto.city(), dto.cep());
     	Address addressSaved = addressRepository.save(address);
     	
-    	Client client = new Client(dto.idClient(), dto.firstName(), dto.lastName(), dto.cpfClient());
+    	Client client = new Client(dto.idClient(), null, dto.login(), dto.password(), address, contact, dto.cpfClient(), dto.firstName(), dto.lastName());
     	Client clientSaved = clientRepository.save(client);
     	
-    	User user = new User(dto.idClient(), dto.login(), dto.password());
-    	User userSaved = userRepository.save(user);
     	
-    }
-/*
-    public void update(ClientDTO clientDTO, Long id) {
-
-        Client client = clientRepository.findById(id)
-                .orElseThrow(() -> new ClientNotFoundException("Client " + id + " was not found"));
-
-        if (CPFValidator.isCPF(clientDTO.cpf()))
-            throw new ClientCpfInvalidException("Cpf " + clientDTO.cpf() + " is invalid");
-
-        if (clientDTO.cpf().equals(client.getCpf()) && clientDTO.login().equals(client.getLogin())) {
-            client.setCpf(clientDTO.cpf());
-            client.setLogin(clientDTO.login());
-            client.setImage(clientDTO.image());
-            client.setPassword(clientDTO.password());
-            client.setLastName(clientDTO.lastName());
-            client.setFirstName(clientDTO.firstName());
-            clientRepository.save(client);
-            return;
-        }
-
-        if (clientRepository.existsByCpf(clientDTO.cpf()))
-            throw new ClientCpfRegisteredException("Cpf " + clientDTO.cpf() + " is already registered");
-
-        if (clientRepository.existsByLogin(clientDTO.login()))
-            throw new ClientLoginRegisteredException("Login " + clientDTO.login() + " is already registered");
-
-        client.setCpf(clientDTO.cpf());
-        client.setLogin(clientDTO.login());
-        client.setImage(clientDTO.image());
-        client.setPassword(clientDTO.password());
-        client.setLastName(clientDTO.lastName());
-        client.setNameClient(clientDTO.nameClient());
-        clientRepository.save(client);
-    }
-
-    public void delete(Long id) {
-        if (!clientRepository.existsById(id)) throw new ClientNotFoundException("Client " + id + " was not found");
-        clientRepository.deleteById(id);
-    }
-
-    public ClientProjection findById(Long id) {
-        return clientRepository.findClientById(id)
-                .orElseThrow(() -> new ClientNotFoundException("Client " + id + " was not found"));
-    }
-
-    public ClientProjection findByCpf(String cpf) {
-        return clientRepository.findClientByCpf(cpf)
-                .orElseThrow(() -> new ClientNotFoundException("Client " + cpf + " was not found"));
-    }
-
-    public List<ClientProjection> findByNameClient(String nameClient) {
-        List<ClientProjection> client = clientRepository.findClientByNameClient(nameClient);
-
-        if (client.isEmpty())
-            throw new ClientNotFoundException("Client " + nameClient + " was not found");
-        return client;
-    }
-
-    //Screen
-
-    public Page<ClientProjectionW9> findW9ByNameClient(Pageable pageable, Integer page) {
-        pageable = PageRequest.of(page, 3, Sort.Direction.ASC, "nameClient");
-        return clientRepository.findClientW9ByNameClient(pageable);
-    }
-
-    public ClientProjectionW10 findW10ById(Long id) {
-        return clientRepository.findClientW10ById(id)
-                .orElseThrow(() -> new ClientNotFoundException("Client " + id + " was not found"));
-    }
-
-    public ClientProjectionC13 findC13ById(Long id) {
-        return clientRepository.findClientC13ById(id)
-                .orElseThrow(() -> new ClientNotFoundException("Client " + id + " was not found"));
-    }
-
-    public ClientProjectionC6 findC6ById(Long id) {
-        return clientRepository.findClientC6ById(id)
-                .orElseThrow(() -> new ClientNotFoundException("Client " + id + " was not found"));
-    }
-
-    public ClientProjectionC7 findC7ById(Long id) {
-        return clientRepository.findClientC7ById(id)
-                .orElseThrow(() -> new ClientNotFoundException("Client " + id + " was not found"));
-    }*/
+    	return new AllClientDTO(client.getId(), client.getFirstName(),client.getLastName(),client.getCpf(),client.getAddress().getStreetName(), client.getAddress().getNumber(), 
+    			client.getAddress().getNeighborhood(), client.getAddress().getComplement(), client.getAddress().getCity(), client.getAddress().getCep(), client.getContact().getEmail(), 
+    			client.getContact().getNetWork(), client.getContact().getPhoneNumber(),client.getLogin(),client.getPassword());
+       	
+    		   }
+	/*
+	 * public void update(ClientDTO clientDTO, Long id) {
+	 * 
+	 * Client client = clientRepository.findById(id) .orElseThrow(() -> new
+	 * ClientNotFoundException("Client " + id + " was not found"));
+	 * 
+	 * if (CPFValidator.isCPF(clientDTO.cpf())) throw new
+	 * ClientCpfInvalidException("Cpf " + clientDTO.cpf() + " is invalid");
+	 * 
+	 * if (clientDTO.cpf().equals(client.getCpf()) &&
+	 * clientDTO.login().equals(client.getLogin())) {
+	 * client.setCpf(clientDTO.cpf()); client.setLogin(clientDTO.login());
+	 * client.setImage(clientDTO.image()); client.setPassword(clientDTO.password());
+	 * client.setLastName(clientDTO.lastName());
+	 * client.setFirstName(clientDTO.firstName()); clientRepository.save(client);
+	 * return; }
+	 * 
+	 * if (clientRepository.existsByCpf(clientDTO.cpf())) throw new
+	 * ClientCpfRegisteredException("Cpf " + clientDTO.cpf() +
+	 * " is already registered");
+	 * 
+	 * if (clientRepository.existsByLogin(clientDTO.login())) throw new
+	 * ClientLoginRegisteredException("Login " + clientDTO.login() +
+	 * " is already registered");
+	 * 
+	 * client.setCpf(clientDTO.cpf()); client.setLogin(clientDTO.login());
+	 * client.setImage(clientDTO.image()); client.setPassword(clientDTO.password());
+	 * client.setLastName(clientDTO.lastName());
+	 * client.setNameClient(clientDTO.nameClient()); clientRepository.save(client);
+	 * }
+	 * 
+	 * public void delete(Long id) { if (!clientRepository.existsById(id)) throw new
+	 * ClientNotFoundException("Client " + id + " was not found");
+	 * clientRepository.deleteById(id); }
+	 * 
+	 * public ClientProjection findById(Long id) { return
+	 * clientRepository.findClientById(id) .orElseThrow(() -> new
+	 * ClientNotFoundException("Client " + id + " was not found")); }
+	 * 
+	 * public ClientProjection findByCpf(String cpf) { return
+	 * clientRepository.findClientByCpf(cpf) .orElseThrow(() -> new
+	 * ClientNotFoundException("Client " + cpf + " was not found")); }
+	 * 
+	 * public List<ClientProjection> findByNameClient(String nameClient) {
+	 * List<ClientProjection> client =
+	 * clientRepository.findClientByNameClient(nameClient);
+	 * 
+	 * if (client.isEmpty()) throw new ClientNotFoundException("Client " +
+	 * nameClient + " was not found"); return client; }
+	 * 
+	 * //Screen
+	 * 
+	 * public Page<ClientProjectionW9> findW9ByNameClient(Pageable pageable, Integer
+	 * page) { pageable = PageRequest.of(page, 3, Sort.Direction.ASC, "nameClient");
+	 * return clientRepository.findClientW9ByNameClient(pageable); }
+	 * 
+	 * public ClientProjectionW10 findW10ById(Long id) { return
+	 * clientRepository.findClientW10ById(id) .orElseThrow(() -> new
+	 * ClientNotFoundException("Client " + id + " was not found")); }
+	 * 
+	 * public ClientProjectionC13 findC13ById(Long id) { return
+	 * clientRepository.findClientC13ById(id) .orElseThrow(() -> new
+	 * ClientNotFoundException("Client " + id + " was not found")); }
+	 * 
+	 * public ClientProjectionC6 findC6ById(Long id) { return
+	 * clientRepository.findClientC6ById(id) .orElseThrow(() -> new
+	 * ClientNotFoundException("Client " + id + " was not found")); }
+	 * 
+	 * public ClientProjectionC7 findC7ById(Long id) { return
+	 * clientRepository.findClientC7ById(id) .orElseThrow(() -> new
+	 * ClientNotFoundException("Client " + id + " was not found")); }
+	 */
 }
