@@ -44,10 +44,7 @@ public class ClientServiceImpl implements ClientService {
     	Client clientSaved = clientRepository.save(client);
     	
     	
-    	return new AllClientDTO(client.getId(), client.getFirstName(),client.getLastName(),client.getCpf(),client.getAddress().getStreetName(), client.getAddress().getNumber(), 
-    			client.getAddress().getNeighborhood(), client.getAddress().getComplement(), client.getAddress().getCity(), client.getAddress().getCep(), client.getContact().getEmail(), 
-    			client.getContact().getNetWork(), client.getContact().getPhoneNumber(),client.getLogin(),client.getPassword());
-       	
+		return clientMapper.toAllDTO(clientSaved);
 	}
 	
 	public void update(AllClientDTO dto, Long id) {
@@ -64,9 +61,7 @@ public class ClientServiceImpl implements ClientService {
 	
 	public AllClientDTO findById(Long id) { 
 		Client client = clientRepository.findById(id).orElseThrow(() -> new ClientNotFoundException("Client " + id + " was not found")); 
-		return new AllClientDTO(client.getId(), client.getFirstName(),client.getLastName(),client.getCpf(),client.getAddress().getStreetName(), client.getAddress().getNumber(), 
-    			client.getAddress().getNeighborhood(), client.getAddress().getComplement(), client.getAddress().getCity(), client.getAddress().getCep(), client.getContact().getEmail(), 
-    			client.getContact().getNetWork(), client.getContact().getPhoneNumber(),client.getLogin(),client.getPassword());
+		return clientMapper.toAllDTO(client);
 	}
 	
 	public List<ClientProjection> findAll() {
