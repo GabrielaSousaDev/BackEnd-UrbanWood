@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/livingArea")
-public class LivingAreaController {
+public class EnvironmentController {
 /*
     private final EnvironmentService livingAreaService;
 
