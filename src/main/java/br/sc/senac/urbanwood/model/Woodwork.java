@@ -27,7 +27,9 @@ public class Woodwork extends User {
 	@OneToMany(mappedBy = "woodwork")
 	private List<Order> order = new ArrayList<>();
 
-	
+	public Woodwork() {
+		
+	}
 
 	public Woodwork(Long id, Image image, String login, String password, Address address, Contact contact,
 			String companyName, String description, String cnpj) {

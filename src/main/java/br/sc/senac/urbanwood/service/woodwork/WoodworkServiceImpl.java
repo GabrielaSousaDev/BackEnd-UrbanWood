@@ -2,14 +2,11 @@ package br.sc.senac.urbanwood.service.woodwork;
 
 import org.springframework.stereotype.Service;
 
-import br.sc.senac.urbanwood.dto.WoodworkDTO;
 import br.sc.senac.urbanwood.dto.woodwork.AllWoodworkDTO;
-import br.sc.senac.urbanwood.exception.woodwork.WoodworkCnpjRegisteredException;
+import br.sc.senac.urbanwood.exception.woodwork.WoodworkNotFoundException;
 import br.sc.senac.urbanwood.mapper.WoodworkMapper;
 import br.sc.senac.urbanwood.model.Address;
-import br.sc.senac.urbanwood.model.Client;
 import br.sc.senac.urbanwood.model.Contact;
-import br.sc.senac.urbanwood.model.User;
 import br.sc.senac.urbanwood.model.Woodwork;
 import br.sc.senac.urbanwood.repository.AddressRepository;
 import br.sc.senac.urbanwood.repository.ContactRepository;
@@ -50,6 +47,14 @@ public class WoodworkServiceImpl implements WoodworkService {
     			woodwork.getContact().getNetWork(), woodwork.getContact().getEmail(), woodwork.getContact().getPhoneNumber(), 
     			woodwork.getLogin(), woodwork.getPassword());
 	}
+	
+	public void delete(Long id) {
+		
+		if (!woodworkRepository.existsById(id))
+			throw new WoodworkNotFoundException("Woodwork " + id + " was not found");
+		
+		woodworkRepository.deleteById(id);
+	}
 
 	/*public void update(WoodworkDTO woodworkDTO, Long id) {
 
@@ -74,11 +79,7 @@ public class WoodworkServiceImpl implements WoodworkService {
 		woodworkRepository.save(woodwork);
 	}
 
-	public void delete(Long id) {
-		if (!woodworkRepository.existsById(id))
-			throw new WoodworkNotFoundException("Woodwork " + id + " was not found");
-		woodworkRepository.delete(id);
-	}
+	
 
 	public ProfileWoodworkFullEditProjection findById(Long id) {
 		return woodworkRepository.findById(id)
