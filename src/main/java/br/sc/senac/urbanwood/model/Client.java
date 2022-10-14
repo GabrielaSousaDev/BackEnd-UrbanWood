@@ -15,10 +15,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode
-@Data
+
 @Entity
 @Table(name="client")
 public class Client extends User{
@@ -35,6 +32,51 @@ public class Client extends User{
 	
 	@OneToMany(mappedBy = "client")
 	private List<Order> order;
+	
+	
+	
+
+	public Client(Long id, Image image, String login, String password, Address address, Contact contact, String cpf,
+			String firstName, String lastName) {
+		super(id, image, login, password, address, contact);
+		this.cpf = cpf;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.order = order;
+	}
+		
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public List<Order> getOrder() {
+		return order;
+	}
+
+	public void setOrder(List<Order> order) {
+		this.order = order;
+	}
+	
 	
 }
 
