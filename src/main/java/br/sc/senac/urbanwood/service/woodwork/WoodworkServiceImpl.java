@@ -40,12 +40,15 @@ public class WoodworkServiceImpl implements WoodworkService {
     	
     	Address address = new Address(dto.idWoodwork(), dto.nameStreet(), dto.number(), dto.neighborhood(), dto.complement(), dto.city(), dto.cep());
     	Address addressSaved = addressRepository.save(address);
-    	
-    	Woodwork woodwork = new Woodwork(dto.idWoodwork(), dto.companyName(), dto.cnpj(), dto.description());
+    	 
+    	Woodwork woodwork = new Woodwork(dto.idWoodwork(), null, dto.login(), dto.password(), address, contact, dto.companyName(), dto.cnpj(), dto.description());
     	Woodwork woodworkSaved = woodworkRepository.save(woodwork);
     	
-    	User user = new User(dto.idWoodwork(), dto.login(), dto.password());
-    	User userSaved = userRepository.save(user);
+    	return new AllWoodworkDTO(woodwork.getId(), woodwork.getCompanyName(), woodwork.getCnpj(), woodwork.getDescription(), 
+    			woodwork.getAddress().getStreetName(), woodwork.getAddress().getNumber(), woodwork.getAddress().getComplement(),
+    			woodwork.getAddress().getNeighborhood(), woodwork.getAddress().getCity(), woodwork.getAddress().getCep(), 
+    			woodwork.getContact().getNetWork(), woodwork.getContact().getEmail(), woodwork.getContact().getPhoneNumber(), 
+    			woodwork.getLogin(), woodwork.getPassword());
 	}
 
 	/*public void update(WoodworkDTO woodworkDTO, Long id) {
