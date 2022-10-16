@@ -19,20 +19,5 @@ public interface ClientService {
     AllClientDTO findById(Long id);
     
     List<ClientProjection> findAll();
-/*
-    ClientProjection findByCpf(String cpf);
 
-    List<ClientProjection> findByNameClient(String nameClient);
-
-    //Screen
-
-    Page<ClientProjectionW9> findW9ByNameClient(Pageable pageable, Integer page);
-
-    ClientProjectionW10 findW10ById(Long id);
-
-    ClientProjectionC13 findC13ById(Long id);
-
-    ClientProjectionC6 findC6ById(Long id);
-
-    ClientProjectionC7 findC7ById(Long id);*/
 }
