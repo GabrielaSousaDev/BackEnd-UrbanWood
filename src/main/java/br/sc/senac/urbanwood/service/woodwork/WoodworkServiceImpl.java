@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import br.sc.senac.urbanwood.dto.WoodworkDTO;
 import br.sc.senac.urbanwood.dto.woodwork.AllWoodworkDTO;
 import br.sc.senac.urbanwood.exception.woodwork.WoodworkNotFoundException;
 import br.sc.senac.urbanwood.mapper.WoodworkMapper;
@@ -71,7 +70,19 @@ public class WoodworkServiceImpl implements WoodworkService {
 				woodwork.getPassword());
 	}
 
+	@Override
+	public void update(AllWoodworkDTO dto, Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
 	public List<WoodworkProjection> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/*public List<WoodworkProjection> findAll() {
 		return null;
 	}
 

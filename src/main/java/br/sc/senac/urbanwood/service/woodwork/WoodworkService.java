@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import br.sc.senac.urbanwood.dto.WoodworkDTO;
 import br.sc.senac.urbanwood.dto.woodwork.AllWoodworkDTO;
 import br.sc.senac.urbanwood.projection.woodwork.WoodworkProjection;
 
@@ -15,7 +14,7 @@ public interface WoodworkService {
 
 	void delete(Long id);
 
-	void update(WoodworkDTO woodworkDTO, Long id);
+	void update(AllWoodworkDTO allWoodworkDTO, Long id);
 
 	AllWoodworkDTO findById(Long id);
 	

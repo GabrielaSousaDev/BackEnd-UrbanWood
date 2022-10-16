@@ -1,12 +1,6 @@
 package br.sc.senac.urbanwood.service.address;
 
-import java.util.List;
-
 import org.springframework.stereotype.Service;
-
-import br.sc.senac.urbanwood.dto.AddressDTO;
-import br.sc.senac.urbanwood.projection.AddressProjection;
-import br.sc.senac.urbanwood.projection.ProfileWoodworkForEditProjection;
 
 @Service
 public class AddressServiceImpl implements AddressService {

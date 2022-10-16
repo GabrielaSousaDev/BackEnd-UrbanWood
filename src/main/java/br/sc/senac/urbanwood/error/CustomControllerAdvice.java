@@ -11,12 +11,10 @@ import br.sc.senac.urbanwood.exception.client.ClientCpfInvalidException;
 import br.sc.senac.urbanwood.exception.client.ClientCpfRegisteredException;
 import br.sc.senac.urbanwood.exception.client.ClientLoginRegisteredException;
 import br.sc.senac.urbanwood.exception.client.ClientNotFoundException;
-import br.sc.senac.urbanwood.exception.color.ColorNotFoundException;
 import br.sc.senac.urbanwood.exception.contact.ContactEmailInvalidException;
 import br.sc.senac.urbanwood.exception.contact.ContactEmailRegisteredException;
 import br.sc.senac.urbanwood.exception.contact.ContactNotFoundException;
 import br.sc.senac.urbanwood.exception.contact.ContactPhoneNumberRegisteredException;
-import br.sc.senac.urbanwood.exception.environment.EnvironmentNotFoundException;
 import br.sc.senac.urbanwood.exception.furniture.FurnitureInvalidException;
 import br.sc.senac.urbanwood.exception.furniture.FurnitureNameRegisteredException;
 import br.sc.senac.urbanwood.exception.furniture.FurnitureNotFoundException;
@@ -70,13 +68,7 @@ public class CustomControllerAdvice {
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST)
 				.body(new ErrorResponse(HttpStatus.BAD_REQUEST, exception.getMessage()));
 	}
-
-	@ExceptionHandler(ColorNotFoundException.class)
-	public ResponseEntity<ErrorResponse> handleColorNotFoundException(Exception exception) {
-		return ResponseEntity.status(HttpStatus.NOT_FOUND)
-				.body(new ErrorResponse(HttpStatus.NOT_FOUND, exception.getMessage()));
-	}
-
+	
 	@ExceptionHandler(ContactEmailRegisteredException.class)
 	public ResponseEntity<ErrorResponse> handleContactEmailRegisteredException(Exception exception) {
 		return ResponseEntity.status(HttpStatus.CONFLICT)
@@ -119,13 +111,7 @@ public class CustomControllerAdvice {
 				.body(new ErrorResponse(HttpStatus.BAD_REQUEST, exception.getMessage()));
 	}
 
-
-	@ExceptionHandler(EnvironmentNotFoundException.class)
-	public ResponseEntity<ErrorResponse> handleLivingAreaNotFoundException(Exception exception) {
-		return ResponseEntity.status(HttpStatus.NOT_FOUND)
-				.body(new ErrorResponse(HttpStatus.NOT_FOUND, exception.getMessage()));
-	}
-
+	
 	@ExceptionHandler(OrderNotFoundException.class)
 	public ResponseEntity<ErrorResponse> handleOrderNotFoundException(Exception exception) {
 		return ResponseEntity.status(HttpStatus.NOT_FOUND)

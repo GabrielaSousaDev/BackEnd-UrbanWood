@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.sc.senac.urbanwood.dto.ClientDTO;
 import br.sc.senac.urbanwood.dto.client.AllClientDTO;
 import br.sc.senac.urbanwood.projection.client.ClientProjection;
 import br.sc.senac.urbanwood.service.client.ClientService;
