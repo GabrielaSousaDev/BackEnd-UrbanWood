@@ -1,14 +1,21 @@
 package br.sc.senac.urbanwood.controller.furniture;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import br.sc.senac.urbanwood.dto.furniture.AllFurnitureDTO;
+import br.sc.senac.urbanwood.service.furniture.FurnitureService;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/furniture")
 public class FurnitureController {
-	/*
+
     private final FurnitureService furnitureService;
 
     public FurnitureController(FurnitureService furnitureService) {
@@ -16,11 +23,11 @@ public class FurnitureController {
     }
 
     @PostMapping
-    public ResponseEntity<FurnitureDTO> addFurniture(@RequestBody FurnitureDTO furnitureDTO) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(furnitureService.save(furnitureDTO));
+    public ResponseEntity<AllFurnitureDTO> addFurniture(@RequestBody AllFurnitureDTO dto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(furnitureService.save(dto));
     }
 
-    @PutMapping("/{id}")
+ /*   @PutMapping("/{id}")
     public ResponseEntity<String> updateFurniture(@RequestBody FurnitureDTO furnitureDTO, @PathVariable(value = "id") Long id) {
         furnitureService.update(furnitureDTO, id);
         return ResponseEntity.status(HttpStatus.OK).body("Furniture updated successfully");

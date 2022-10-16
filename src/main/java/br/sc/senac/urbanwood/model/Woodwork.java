@@ -3,10 +3,13 @@ package br.sc.senac.urbanwood.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import br.sc.senac.urbanwood.enumeration.Environment;
 
 @Entity
 @Table(name = "woodwork")
@@ -17,17 +20,18 @@ public class Woodwork extends User {
 
 	@Column(name = "description_woodwork")
 	private String description;
-	
-	@Column(name="cnpj_woodwork")
+
+	@Column(name = "cnpj_woodwork")
 	private String cnpj;
-	
-	@OneToMany
-	private List<Environment> environment = new ArrayList<>();
+
+	@OneToMany(mappedBy = "furniture", cascade = CascadeType.ALL)
+	private List<Furniture> furniture;
 
 	@OneToMany(mappedBy = "woodwork")
 	private List<Order> order = new ArrayList<>();
 
-	public Woodwork() {}
+	public Woodwork() {
+	}
 
 	public Woodwork(Long id, Image image, String login, String password, Address address, Contact contact,
 			String companyName, String description, String cnpj) {
@@ -35,6 +39,10 @@ public class Woodwork extends User {
 		this.companyName = companyName;
 		this.description = description;
 		this.cnpj = cnpj;
+	}
+
+	public Woodwork(Woodwork id_woodwork) {
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getCompanyName() {
@@ -61,14 +69,6 @@ public class Woodwork extends User {
 		this.cnpj = cnpj;
 	}
 
-	public List<Environment> getEnvironment() {
-		return environment;
-	}
-
-	public void setEnvironment(List<Environment> environment) {
-		this.environment = environment;
-	}
-
 	public List<Order> getOrder() {
 		return order;
 	}
@@ -77,5 +77,4 @@ public class Woodwork extends User {
 		this.order = order;
 	}
 
-	
 }

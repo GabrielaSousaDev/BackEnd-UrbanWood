@@ -1,37 +1,36 @@
 package br.sc.senac.urbanwood.service.furniture;
 
-import java.util.List;
-
 import org.springframework.stereotype.Service;
 
 import br.sc.senac.urbanwood.dto.furniture.AllFurnitureDTO;
 import br.sc.senac.urbanwood.mapper.FurnitureMapper;
-import br.sc.senac.urbanwood.model.Color;
 import br.sc.senac.urbanwood.model.Furniture;
-import br.sc.senac.urbanwood.repository.ColorRepository;
+import br.sc.senac.urbanwood.model.Woodwork;
 import br.sc.senac.urbanwood.repository.FurnitureRepository;
+import br.sc.senac.urbanwood.repository.WoodworkRepository;
 
 @Service
 public class FurnitureServiceImpl implements FurnitureService {
 
     private final FurnitureRepository furnitureRepository;
     private final FurnitureMapper furnitureMapper;
-    private final ColorRepository colorRepository;
+    private final WoodworkRepository woodworkRepository;
 
-    public FurnitureServiceImpl(FurnitureRepository furnitureRepository, FurnitureMapper furnitureMapper, ColorRepository colorRepository) {
+    public FurnitureServiceImpl(FurnitureRepository furnitureRepository, FurnitureMapper furnitureMapper, WoodworkRepository woodworkRepository) {
         this.furnitureRepository = furnitureRepository;
         this.furnitureMapper = furnitureMapper;
-        this.colorRepository = colorRepository;
+		this.woodworkRepository = woodworkRepository;
     }
 
     public AllFurnitureDTO save(AllFurnitureDTO dto) {
-
-    	/*Furniture furniture = new Furniture(dto.idFurniture(), dto.name(), dto.price(), dto.description(), dto.furnitureSize());
+	
+    	Woodwork woodwork = new Woodwork(dto.id_woodwork());
+    	Woodwork woodworkSaved = furnitureRepository.save(woodwork);
+    	
+    	Furniture furniture = new Furniture(dto.idFurniture(),dto.name(), dto.price(), dto.description());
     	Furniture furnitureSaved = furnitureRepository.save(furniture);
     	
-    	Color color = new List<Color>(dto.idColor());
-    	Color colorSaved = colorRepository.save(color);	*/
-    	return new AllFurnitureDTO(null, null, null, null, null, null);
+    	return new FurnitureMapper().toDTO(furnitureSaved);
     }
 
    /* public void update(FurnitureDTO furnitureDTO, Long id) {

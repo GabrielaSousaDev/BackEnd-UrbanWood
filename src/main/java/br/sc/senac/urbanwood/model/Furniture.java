@@ -1,20 +1,21 @@
 package br.sc.senac.urbanwood.model;
 
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import br.sc.senac.urbanwood.enumeration.Color;
+import br.sc.senac.urbanwood.enumeration.Environment;
+import br.sc.senac.urbanwood.enumeration.SizeFurniture;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,6 +26,10 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name="furniture")
 public class Furniture {
+
+	public Furniture(Long idFurniture, String name2, Double price2, String description2) {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,19 +45,23 @@ public class Furniture {
 	@Column(name="description_furniture")
 	private String description;
 	
+	@Enumerated(EnumType.ORDINAL)
 	@Column(name="furniture_size_furniture")
-	private Double furnitureSize;
-
+	private SizeFurniture furnitureSize;
+	
+	@Enumerated(EnumType.ORDINAL)
+	@Column(name="environment_furniture")
+	private Environment environment;
+	
+	@Enumerated(EnumType.ORDINAL)
+	@Column(name="color_furniture")
+	private Color color;
+	
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_image", nullable = false)
 	private Image image;
-	
-	@ManyToMany
-	@JoinTable(name = "furniture_color", joinColumns = @JoinColumn(name = "furniture_id"),
-	inverseJoinColumns = @JoinColumn(name = "color_id"))
-	private List<Color> colors;
-	
+		
 	@ManyToOne
-	@JoinColumn(name = "id_environment", nullable = false)
-	private Environment environment;
+	@JoinColumn(name = "id_woodwork", nullable = false)
+	private Woodwork woodwork;
 }
