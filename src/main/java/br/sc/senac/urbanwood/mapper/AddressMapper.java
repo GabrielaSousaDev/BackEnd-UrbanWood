@@ -2,9 +2,6 @@ package br.sc.senac.urbanwood.mapper;
 
 import org.springframework.stereotype.Service;
 
-import br.sc.senac.urbanwood.dto.AddressDTO;
-import br.sc.senac.urbanwood.model.Address;
-
 @Service
 public class AddressMapper {
 

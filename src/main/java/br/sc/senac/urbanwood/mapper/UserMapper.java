@@ -2,9 +2,6 @@ package br.sc.senac.urbanwood.mapper;
 
 import org.springframework.stereotype.Service;
 
-import br.sc.senac.urbanwood.dto.UserDTO;
-import br.sc.senac.urbanwood.model.User;
-
 @Service
 public class UserMapper {
 /*

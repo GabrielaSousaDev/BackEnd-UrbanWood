@@ -2,11 +2,8 @@ package br.sc.senac.urbanwood.mapper;
 
 import org.springframework.stereotype.Service;
 
-import br.sc.senac.urbanwood.dto.ClientDTO;
 import br.sc.senac.urbanwood.dto.client.AllClientDTO;
-import br.sc.senac.urbanwood.model.Address;
 import br.sc.senac.urbanwood.model.Client;
-import br.sc.senac.urbanwood.model.Contact;
 
 @Service
 public class ClientMapper {

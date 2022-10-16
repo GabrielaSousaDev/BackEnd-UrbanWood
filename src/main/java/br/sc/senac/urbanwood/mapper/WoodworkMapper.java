@@ -2,7 +2,6 @@ package br.sc.senac.urbanwood.mapper;
 
 import org.springframework.stereotype.Service;
 
-import br.sc.senac.urbanwood.dto.WoodworkDTO;
 import br.sc.senac.urbanwood.dto.woodwork.AllWoodworkDTO;
 import br.sc.senac.urbanwood.model.Woodwork;
 
