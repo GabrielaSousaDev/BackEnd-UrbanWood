@@ -1,15 +1,9 @@
 package br.sc.senac.urbanwood.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
 import br.sc.senac.urbanwood.enumeration.Environment;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "woodwork")
@@ -21,28 +15,33 @@ public class Woodwork extends User {
 	@Column(name = "description_woodwork")
 	private String description;
 
+
 	@Column(name = "cnpj_woodwork")
 	private String cnpj;
 
-	@OneToMany(mappedBy = "furniture", cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Furniture> furniture;
 
-	@OneToMany(mappedBy = "woodwork")
-	private List<Order> order = new ArrayList<>();
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Order> order;
 
-	public Woodwork() {
-	}
 
-	public Woodwork(Long id, Image image, String login, String password, Address address, Contact contact,
-			String companyName, String description, String cnpj) {
-		super(id, image, login, password, address, contact);
+	@Enumerated(EnumType.ORDINAL)
+	@Column(name="environment_furniture")
+	private Environment environment;
+
+	public Woodwork(Long idUser, String login, String password,
+					Address address, Contact contact, byte[] image,
+					String companyName, String description, String cnpj,
+					List<Furniture> furniture, List<Order> order,
+					Environment environment) {
+		super(idUser, login, password, address, contact, image);
 		this.companyName = companyName;
 		this.description = description;
 		this.cnpj = cnpj;
-	}
-
-	public Woodwork(Woodwork id_woodwork) {
-		// TODO Auto-generated constructor stub
+		this.furniture = furniture;
+		this.order = order;
+		this.environment = environment;
 	}
 
 	public String getCompanyName() {
@@ -69,6 +68,14 @@ public class Woodwork extends User {
 		this.cnpj = cnpj;
 	}
 
+	public List<Furniture> getFurniture() {
+		return furniture;
+	}
+
+	public void setFurniture(List<Furniture> furniture) {
+		this.furniture = furniture;
+	}
+
 	public List<Order> getOrder() {
 		return order;
 	}
@@ -77,4 +84,11 @@ public class Woodwork extends User {
 		this.order = order;
 	}
 
+	public Environment getEnvironment() {
+		return environment;
+	}
+
+	public void setEnvironment(Environment environment) {
+		this.environment = environment;
+	}
 }

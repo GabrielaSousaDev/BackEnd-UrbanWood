@@ -1,71 +1,56 @@
 package br.sc.senac.urbanwood.model;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-@Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-@Table(name="user")
+
+@MappedSuperclass
 public abstract class User {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id_user")
-	private Long id;
+	@Column(name="idUser")
+	private Long idUser;
 
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_image", nullable = true)
-	private Image image;
-	
-	@Column(name="login_user")
+	@Column(name="login")
 	private String login;
 	
-	@Column(name="password_user")
+	@Column(name="password")
 	private String password;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_address", nullable = false)
+    @JoinColumn(name = "id_address_user")
 	private Address address;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_contact", nullable = false)
+    @JoinColumn(name = "id_contact_user")
 	private Contact contact;
-	
-	protected User() {
-	}
+	@Lob
+	private byte[] image;
 
-	protected User(Long id, Image image, String login, String password, Address address, Contact contact) {
-		super();
-		this.id = id;
-		this.image = image;
+	public User(Long idUser, String login, String password, Address address, Contact contact, byte[] image) {
+		this.idUser = idUser;
 		this.login = login;
 		this.password = password;
 		this.address = address;
 		this.contact = contact;
+		this.image = image;
 	}
 
-	public Long getId() {
-		return id;
+	public User() {
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public Long getIdUser() {
+		return idUser;
 	}
 
-	public Image getImage() {
+	public void setIdUser(Long idUser) {
+		this.idUser = idUser;
+	}
+
+	public byte[] getImage() {
 		return image;
 	}
 
-	public void setImage(Image image) {
+	public void setImage(byte[] image) {
 		this.image = image;
 	}
 
@@ -100,6 +85,4 @@ public abstract class User {
 	public void setContact(Contact contact) {
 		this.contact = contact;
 	}
-	
-	
 }

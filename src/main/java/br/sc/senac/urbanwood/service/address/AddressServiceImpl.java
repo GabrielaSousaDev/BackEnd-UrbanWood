@@ -1,61 +1,61 @@
 package br.sc.senac.urbanwood.service.address;
 
+import br.sc.senac.urbanwood.dto.adress.AddressDTO;
+import br.sc.senac.urbanwood.dto.woodwork.WoodworkDTO;
+import br.sc.senac.urbanwood.exception.address.AddressNotFoundException;
+import br.sc.senac.urbanwood.mapper.AddressMapper;
+import br.sc.senac.urbanwood.model.Address;
+import br.sc.senac.urbanwood.repository.AddressRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class AddressServiceImpl implements AddressService {
 
-/*
-	private final AddressRepository addressRepository;
-	private final AddressMapper addressMapper;
+	private AddressRepository addressRepository;
+	private AddressMapper addressMapper;
 
 	public AddressServiceImpl(AddressRepository addressRepository, AddressMapper addressMapper) {
 		this.addressRepository = addressRepository;
 		this.addressMapper = addressMapper;
 	}
 
-	public AddressDTO save(AddressDTO addressDTO) {
-
-		if (addressRepository.existsByStreetAndNumber(addressDTO.streetName(), addressDTO.number()))
-			throw new AddressStreetAndNumberRegisteredException("Street " + addressDTO.streetName() + " and Number "
-					+ addressDTO.number() + " are already registered");
-
-		if (addressDTO.number() <= 0)
-			throw new AddressInvalidException("Number " + addressDTO.number() + " is invalid");
-
-		Address address = addressMapper.toEntity(addressDTO);
+	@Override
+	public AddressDTO save(AddressDTO dto) {
+		Address address = new Address(dto.id(),dto.streetName() , dto.number(), dto.neighborhood(),
+				dto.complement(), dto.city(), dto.cep());
 		Address addressSaved = addressRepository.save(address);
-		return addressMapper.toDTO(addressSaved);
+	    return addressMapper.toDTO(addressSaved);
 	}
 
-	public void update(AddressDTO addressDTO, Long id) {
-
+	@Override
+	public void update(AddressDTO dto, Long id) {
 		Address address = addressRepository.findById(id)
-				.orElseThrow(() -> new AddressNotFoundException("Address " + id + " was not found"));
+				.orElseThrow(() -> new AddressNotFoundException("Client " + id + " was not found"));
 
-		if (addressDTO.number() <= 0)
-			throw new AddressInvalidException("Number " + addressDTO.number() + " is invalid");
+		address.setNeighborhood(dto.neighborhood());
+		address.setCep(dto.cep());
+		address.setCity(dto.city());
+		address.setComplement(dto.complement());
+		address.setNumber(dto.number());
+		address.setStreetName(dto.streetName());
+
+		addressRepository.saveAndFlush(address);
 	}
 
+	@Override
 	public void delete(Long id) {
-		if (!addressRepository.existsById(id))
-			throw new AddressNotFoundException("Address " + id + " was not found");
+		addressRepository.findById(id)
+				.orElseThrow(() -> new AddressNotFoundException("Client " + id + " was not found"));
 		addressRepository.deleteById(id);
 	}
 
-	public AddressProjection findById(Long id) {
-		return addressRepository.findAddressById(id)
-				.orElseThrow(() -> new AddressNotFoundException("Address " + id + " was not found"));
+	@Override
+	public AddressDTO findById(Long id) {
+		Address address = addressRepository.findById(id)
+				.orElseThrow(() -> new AddressNotFoundException("Client " + id + " was not found"));
+		return addressMapper.toDTO(address);
 	}
-
-	public List findByNeighborhoodWoodwork(String neighborhoodWoodwork) {
-		List<ProfileWoodworkForEditProjection> address = addressRepository.findByWoodworkNeighborhood(neighborhoodWoodwork);
-
-		if (address.isEmpty())
-			throw new WoodworkNotFoundException("Woodwork " + neighborhoodWoodwork + " was not found");
-		return address;
-	}
-
-	*/
 
 }

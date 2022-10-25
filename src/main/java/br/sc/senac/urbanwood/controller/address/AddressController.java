@@ -1,44 +1,38 @@
 package br.sc.senac.urbanwood.controller.address;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
+import br.sc.senac.urbanwood.dto.adress.AddressDTO;
+import br.sc.senac.urbanwood.service.address.AddressServiceImpl;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/address")
-public class AddressController {
-/*
-    private final AddressService addressService;
+public class AddressController  {
+    private final AddressServiceImpl addressServiceImpl;
 
-    public AddressController(AddressService addressService) {
-        this.addressService = addressService;
+    public AddressController(AddressServiceImpl addressServiceImpl) {
+        super();
+        this.addressServiceImpl = addressServiceImpl;
     }
-
     @PostMapping
-    public ResponseEntity<AddressDTO> addAddress(@RequestBody AddressDTO addressDTO) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(addressService.save(addressDTO));
+    public ResponseEntity<AddressDTO> saveAddress(@RequestBody @Validated AddressDTO dto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(addressServiceImpl.save(dto));
     }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<String> updateAddress(@RequestBody AddressDTO addressDTO, @PathVariable(value = "id") Long id) {
-        addressService.update(addressDTO, id);
-        return ResponseEntity.status(HttpStatus.OK).body("Address updated successfully");
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteAddress(@PathVariable(value = "id") Long id) {
-        addressService.delete(id);
-        return ResponseEntity.status(HttpStatus.OK).body("Address deleted successfully");
-    }
-
     @GetMapping("/{id}")
-    public ResponseEntity<AddressProjection> getProjectionById(@PathVariable(value = "id") Long id) {
-        return ResponseEntity.status(HttpStatus.OK).body(addressService.findById(id));
+    public ResponseEntity<AddressDTO> getAddressById(@PathVariable(value = "id") Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(addressServiceImpl.findById(id));
     }
-
-    @GetMapping("/{neighborhoodWoodwork}")
-    public ResponseEntity<java.util.List<ProfileWoodworkForEditProjection>> getProjectionByNeighborhood(@PathVariable(value = "neighborhood") String neighborhood) {
-        return ResponseEntity.status(HttpStatus.OK).body(addressService.findByWoodworkNeighborhood(neighborhood));
-    }*/
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteClient(@PathVariable(value = "id") Long id) {
+        addressServiceImpl.delete(id);
+       return ResponseEntity.status(HttpStatus.OK).body("Client deleted successfully");
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateClient(@RequestBody AddressDTO dto, @PathVariable(value = "id") Long id) {
+       addressServiceImpl.update(dto, id);
+        return ResponseEntity.status(HttpStatus.OK).body("Client updated successfully");
+    }
 }

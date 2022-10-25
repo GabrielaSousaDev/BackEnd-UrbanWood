@@ -1,40 +1,20 @@
 package br.sc.senac.urbanwood.model;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
 import br.sc.senac.urbanwood.enumeration.Color;
 import br.sc.senac.urbanwood.enumeration.Environment;
 import br.sc.senac.urbanwood.enumeration.SizeFurniture;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
+
+import javax.persistence.*;
+
+
 @Entity
 @Table(name="furniture")
 public class Furniture {
 
-	public Furniture(Long idFurniture, String name2, Double price2, String description2) {
-		// TODO Auto-generated constructor stub
-	}
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id_furniture")
-	private Long id;
+	private Long idFurniture;
 	
 	@Column(name="name_furniture")
 	private String name;
@@ -56,12 +36,93 @@ public class Furniture {
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name="color_furniture")
 	private Color color;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_image", nullable = false)
-	private Image image;
-		
-	@ManyToOne
-	@JoinColumn(name = "id_woodwork", nullable = false)
+
+	@JoinColumn(name = "furniture")
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Woodwork woodwork;
+
+	public Furniture(Long idFurniture, String name, Double price, String description,
+					 SizeFurniture furnitureSize, Environment environment, Color color,
+					  Woodwork woodwork) {
+		this.idFurniture = idFurniture;
+		this.name = name;
+		this.price = price;
+		this.description = description;
+		this.furnitureSize = furnitureSize;
+		this.environment = environment;
+		this.color = color;
+		this.woodwork = woodwork;
+	}
+
+	public Furniture() {
+
+	}
+
+
+
+
+	public Long getId() {
+		return idFurniture;
+	}
+
+	public void setId(Long id) {
+		this.idFurniture = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public SizeFurniture getFurnitureSize() {
+		return furnitureSize;
+	}
+
+	public void setFurnitureSize(SizeFurniture furnitureSize) {
+		this.furnitureSize = furnitureSize;
+	}
+
+	public Environment getEnvironment() {
+		return environment;
+	}
+
+	public void setEnvironment(Environment environment) {
+		this.environment = environment;
+	}
+
+	public Color getColor() {
+		return color;
+	}
+
+	public void setColor(Color color) {
+		this.color = color;
+	}
+
+
+	public Woodwork getWoodwork() {
+		return woodwork;
+	}
+
+	public void setWoodwork(Woodwork woodwork) {
+		this.woodwork = woodwork;
+	}
 }

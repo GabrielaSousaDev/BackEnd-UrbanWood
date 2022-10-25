@@ -1,49 +1,42 @@
 package br.sc.senac.urbanwood.model;
 
-import java.util.ArrayList;
+import javax.persistence.*;
 import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 
 @Entity
 @Table(name="client")
 public class Client extends User{
-	
-	@Column(name="cpf_client", length = 15, nullable = false, unique = true)
+
+
+	@Column(name="cpf_client")
+	@JoinColumn(name="cpf_client")
 	private String cpf;
 	
-	@Column(name="first_name_client", nullable = false)
+	@Column(name="first_name_client")
 	private String firstName;
 	
-	@Column(name="last_name_client", nullable = false)
+	@Column(name="last_name_client")
 	private String lastName;
 	
-	@OneToMany(mappedBy = "client")
-	private List<Order> order = new ArrayList<>();	
+	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+	private List<Order> order;
 
-	public Client() {
-	}
-	
-	public Client(Long id, Image image, String login, String password, Address address, Contact contact, String cpf,
-			String firstName, String lastName) {
-		super(id, image, login, password, address, contact);
+	public Client(Long idUser, String login, String password, Address address,
+				  Contact contact, byte[] image, String cpf, String firstName,
+				  String lastName, List<Order> order) {
+		super(idUser, login, password, address, contact, image);
 		this.cpf = cpf;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.order = order;
 	}
-		
+
+	public Client() {
+		super();
+
+	}
+
 	public String getCpf() {
 		return cpf;
 	}
@@ -75,7 +68,6 @@ public class Client extends User{
 	public void setOrder(List<Order> order) {
 		this.order = order;
 	}
-	
-	
+
 }
 

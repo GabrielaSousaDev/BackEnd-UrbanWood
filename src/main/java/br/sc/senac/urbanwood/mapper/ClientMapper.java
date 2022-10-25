@@ -1,22 +1,21 @@
 package br.sc.senac.urbanwood.mapper;
 
+import br.sc.senac.urbanwood.dto.client.ClientDTO;
+import br.sc.senac.urbanwood.model.*;
 import org.springframework.stereotype.Service;
-
-import br.sc.senac.urbanwood.dto.client.AllClientDTO;
-import br.sc.senac.urbanwood.model.Client;
 
 @Service
 public class ClientMapper {
+    public ClientDTO toDTO(Client client) {
 
-	 public AllClientDTO toAllDTO(Client client) {
-	        return new AllClientDTO(client.getId(), client.getFirstName(),client.getLastName(),client.getCpf(),client.getAddress().getStreetName(), client.getAddress().getNumber(), 
-	    			client.getAddress().getNeighborhood(), client.getAddress().getComplement(), client.getAddress().getCity(), client.getAddress().getCep(), client.getContact().getEmail(), 
-	    			client.getContact().getNetWork(), client.getContact().getPhoneNumber(),client.getLogin(),client.getPassword());
-	 }
-
-	    /*public Client toAllEntity(AllClientDTO dto) {
-	    	Contact contact = new Contact(dto.idClient(), dto.email(), dto.phone(), dto.socialNetwork());
-	    	Address address = new Address(dto.idClient(), dto.nameStreet(), dto.number(), dto.neighborhood(), dto.complement(), dto.city(), dto.cep());
-	        return new Client(dto.idClient(), null, dto.login(), dto.password(), address, contact, dto.cpfClient(), dto.firstName(), dto.lastName());
-	    }*/
+        return new ClientDTO(client.getIdUser(), client.getLogin(), client.getPassword(),
+                client.getAddress(), client.getContact(), client.getCpf(),
+                client.getCpf(), client.getLastName(), client.getOrder(), client.getImage());
+    }
+    public Client toEntity(ClientDTO dto) {
+        Client clientEntity = new Client(dto.idUser(), dto.login(), dto.password(),
+                dto.address(),dto.contact(),dto.imageProfile(), dto.cpf(), dto.firstName(), dto.lastName(),
+                dto.order());
+        return clientEntity;
+    }
 }

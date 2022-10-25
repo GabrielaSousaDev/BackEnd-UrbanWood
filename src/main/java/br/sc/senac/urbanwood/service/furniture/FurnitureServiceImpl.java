@@ -1,63 +1,60 @@
 package br.sc.senac.urbanwood.service.furniture;
 
-import org.springframework.stereotype.Service;
-
-import br.sc.senac.urbanwood.dto.furniture.AllFurnitureDTO;
+import br.sc.senac.urbanwood.dto.furniture.FurnitureDTO;
+import br.sc.senac.urbanwood.exception.furniture.FurnitureInvalidException;
+import br.sc.senac.urbanwood.exception.furniture.FurnitureNameRegisteredException;
+import br.sc.senac.urbanwood.exception.furniture.FurnitureNotFoundException;
 import br.sc.senac.urbanwood.mapper.FurnitureMapper;
 import br.sc.senac.urbanwood.model.Furniture;
-import br.sc.senac.urbanwood.model.Woodwork;
+
 import br.sc.senac.urbanwood.repository.FurnitureRepository;
-import br.sc.senac.urbanwood.repository.WoodworkRepository;
+
+import org.springframework.stereotype.Service;
 
 @Service
 public class FurnitureServiceImpl implements FurnitureService {
 
     private final FurnitureRepository furnitureRepository;
     private final FurnitureMapper furnitureMapper;
-    private final WoodworkRepository woodworkRepository;
 
-    public FurnitureServiceImpl(FurnitureRepository furnitureRepository, FurnitureMapper furnitureMapper, WoodworkRepository woodworkRepository) {
+    public FurnitureServiceImpl(FurnitureRepository furnitureRepository, FurnitureMapper furnitureMapper) {
         this.furnitureRepository = furnitureRepository;
         this.furnitureMapper = furnitureMapper;
-		this.woodworkRepository = woodworkRepository;
+
     }
 
-    public AllFurnitureDTO save(AllFurnitureDTO dto) {
-	
-    	Woodwork woodwork = new Woodwork(dto.id_woodwork());
-    	Woodwork woodworkSaved = furnitureRepository.save(woodwork);
-    	
-    	Furniture furniture = new Furniture(dto.idFurniture(),dto.name(), dto.price(), dto.description());
+    public FurnitureDTO save(FurnitureDTO dto) {
+
+    	Furniture furniture = new Furniture(dto.idFurniture(),dto.name(), dto.price(),
+                dto.description(), dto.sizeFurniture(), dto.environment(), dto.color(),
+                dto.woodwork());
     	Furniture furnitureSaved = furnitureRepository.save(furniture);
-    	
-    	return new FurnitureMapper().toDTO(furnitureSaved);
+
+    	return furnitureMapper.toDTO(furnitureSaved);
     }
 
-   /* public void update(FurnitureDTO furnitureDTO, Long id) {
+    public void update(FurnitureDTO furnitureDTO, Long id) {
 
         Furniture furniture = furnitureRepository.findById(id)
                 .orElseThrow(() -> new FurnitureNotFoundException("Furniture " + id + " was not found"));
 
-        if (furnitureDTO.furnitureSize() <= 0 || furnitureDTO.priceFurniture() <= 0)
+        if ((furnitureDTO.sizeFurniture().equals(0)) || furnitureDTO.price() <= 0)
             throw new FurnitureInvalidException("The Furniture Size is less than zero or the Price is less than zero");
 
-        if (furnitureDTO.nameFurniture().equals(furniture.getNameFurniture())) {
+        if (furnitureDTO.name().equals(furniture.getName())) {
             furniture.setDescription(furnitureDTO.description());
-            furniture.setNameFurniture(furnitureDTO.nameFurniture());
-            furniture.setFurnitureSize(furnitureDTO.furnitureSize());
-            furniture.setPriceFurniture(furnitureDTO.priceFurniture());
-            furnitureRepository.save(furniture);
+            furniture.setName(furnitureDTO.name());
+            furniture.setFurnitureSize(furnitureDTO.sizeFurniture());
+            furniture.setPrice(furnitureDTO.price());
+            furnitureRepository.saveAndFlush(furniture);
             return;
         }
 
-        if (furnitureRepository.existsByNameFurniture(furnitureDTO.nameFurniture()))
-            throw new FurnitureNameRegisteredException("Furniture " + furnitureDTO.nameFurniture() + " is already registered");
-
         furniture.setDescription(furnitureDTO.description());
-        furniture.setNameFurniture(furnitureDTO.nameFurniture());
-        furniture.setFurnitureSize(furnitureDTO.furnitureSize());
-        furniture.setPriceFurniture(furnitureDTO.priceFurniture());
-        furnitureRepository.save(furniture);
+        furniture.setName(furnitureDTO.name());
+        furniture.setFurnitureSize(furnitureDTO.sizeFurniture());
+        furniture.setPrice(furnitureDTO.price());
+        furnitureRepository.saveAndFlush(furniture);
     }
 
     public void delete(Long id) {
@@ -65,40 +62,12 @@ public class FurnitureServiceImpl implements FurnitureService {
             throw new FurnitureNotFoundException("Furniture " + id + " was not found");
         furnitureRepository.deleteById(id);
     }
-
-    public FurnitureProjection findById(Long id) {
-        return furnitureRepository.findFurnitureById(id)
-                .orElseThrow(() -> new FurnitureNotFoundException("Id " + id + " was not found"));
+    public FurnitureDTO findById(Long id) {
+        Furniture furniture = furnitureRepository.findById(id)
+                .orElseThrow(() -> new FurnitureNotFoundException("Furniture on " + id + " was not found"));
+        return furnitureMapper.toDTO(furniture);
     }
 
-    public List<FurnitureProjection> findByNameFurniture(String nameFurniture) {
-        List<FurnitureProjection> furniture = furnitureRepository.findFurnitureByNameFurniture(nameFurniture);
 
-        if(furniture.isEmpty())
-            throw new FurnitureNotFoundException("Name " + nameFurniture + " was not found");
-        return furniture;
-    }
 
-    public List<FurnitureProjection> findByPriceFurniture(Double priceFurniture) {
-        List<FurnitureProjection> furniture = furnitureRepository.findFurnitureByPriceFurniture(priceFurniture);
-
-        if(furniture.isEmpty())
-            throw new FurnitureNotFoundException("Price " + priceFurniture + " was not found");
-        return furniture;
-    }
-
-    //Screen
-
-    public FurnitureProjectionC14 findC14ById(Long id) {
-        return furnitureRepository.findFurnitureC14ById(id)
-                .orElseThrow(() -> new FurnitureNotFoundException("Id " + id + " was not found"));
-    }
-
-    public List<FurnitureProjectionC15> findC15OrderByNameFurniture() {
-        List<FurnitureProjectionC15> furniture = furnitureRepository.findAllOrderByNameFurniture();
-
-        if(furniture.isEmpty())
-            throw new FurnitureNotFoundException("Was not found");
-        return furniture;
-    }*/
 }

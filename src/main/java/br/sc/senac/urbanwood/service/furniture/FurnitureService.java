@@ -1,14 +1,12 @@
 package br.sc.senac.urbanwood.service.furniture;
 
+import br.sc.senac.urbanwood.dto.furniture.FurnitureDTO;
 import org.springframework.stereotype.Service;
-
-import br.sc.senac.urbanwood.dto.client.AllClientDTO;
-import br.sc.senac.urbanwood.dto.furniture.AllFurnitureDTO;
 
 @Service
 public interface FurnitureService {
 
-    AllFurnitureDTO save(AllFurnitureDTO dto);
+    FurnitureDTO save(FurnitureDTO dto);
 
    /* void update(FurnitureDTO furnitureDTO, Long id);
 

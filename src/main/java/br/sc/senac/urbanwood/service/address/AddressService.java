@@ -1,17 +1,20 @@
 package br.sc.senac.urbanwood.service.address;
 
-public interface AddressService {
-/*
+import br.sc.senac.urbanwood.dto.adress.AddressDTO;
+import br.sc.senac.urbanwood.dto.woodwork.WoodworkDTO;
+
+import java.util.List;
+
+public interface AddressService  {
+
     AddressDTO save(AddressDTO addressDTO);
 
     void update(AddressDTO addressDTO, Long id);
 
     void delete(Long id);
 
-    AddressProjection findById(Long id);
+    AddressDTO findById(Long id);
     
-    List<ProfileWoodworkForEditProjection> findByWoodworkNeighborhood(String neighborhood);
+    //List<WoodworkDTO> findByWoodworkNeighborhood(String neighborhood);
 
-
-    */
 }
