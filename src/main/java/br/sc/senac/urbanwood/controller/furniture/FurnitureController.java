@@ -38,7 +38,4 @@ public class FurnitureController {
     public ResponseEntity<FurnitureDTO> getFindById(@PathVariable(value = "id") Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(furnitureServiceImpl.findById(id));
     }
-
-    /* teste*/
-    /*teste 2 */
 }

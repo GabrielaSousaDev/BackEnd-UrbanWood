@@ -5,7 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0120a09-6c90-46f7-bc31-a374b1e8281e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/service/encryptor/Encryptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/UrbanWoodApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/UrbanWoodApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/controller/client/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/controller/client/ClientController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/controller/furniture/FurnitureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/controller/furniture/FurnitureController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/controller/order/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/controller/order/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/controller/woodwork/WoodworkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/controller/woodwork/WoodworkController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/dto/client/ClientDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/dto/client/ClientDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/dto/furniture/FurnitureDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/dto/furniture/FurnitureDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/dto/order/OrderDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/dto/order/OrderDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/dto/woodwork/WoodworkDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/dto/woodwork/WoodworkDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/enumeration/Environment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/enumeration/Environment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/mapper/ClientMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/mapper/ClientMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/mapper/ContactMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/mapper/ContactMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/mapper/FurnitureMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/mapper/FurnitureMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/mapper/OrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/mapper/OrderMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/mapper/WoodworkMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/mapper/WoodworkMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/model/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/model/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/model/Furniture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/model/Furniture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/model/Image.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/model/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/model/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/model/Woodwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/model/Woodwork.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/repository/ContactRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/repository/ContactRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/repository/FurnitureRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/repository/FurnitureRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/repository/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/repository/OrderRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/repository/WoodworkRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/repository/WoodworkRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/service/client/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/service/client/ClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/service/client/ClientServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/service/client/ClientServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/service/contact/ContactServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/service/contact/ContactServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/service/furniture/FurnitureServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/service/furniture/FurnitureServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/service/order/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/service/order/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/service/order/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/service/order/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/service/woodwork/WoodworkService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/service/woodwork/WoodworkService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/service/woodwork/WoodworkServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/sc/senac/urbanwood/service/woodwork/WoodworkServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +88,7 @@
     "extract.method.default.visibility": "private",
     "last_opened_file_path": "C:/Users/User/Documents/GitHub/BackEnd-UrbanWood",
     "show.run.dashboard.notification": "false",
-    "spring.configuration.checksum": "480f9b2610d50a999fe71c67095027b0"
+    "spring.configuration.checksum": "8e320a1c68131141829d01dc03aaf963"
   }
 }]]></component>
   <component name="RunManager" selected="Spring Boot.UrbanWoodApplication">
@@ -80,13 +116,6 @@
     </configuration>
     <configuration name="UrbanWoodApplication (2)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="UrbanWood-BackEnd 2.0" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="br.sc.senac.urbanwood.UrbanWoodApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UrbanWoodApplication (3)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="UrbanWood" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="br.sc.senac.urbanwood.UrbanWoodApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -136,7 +165,7 @@
       <workItem from="1666545154381" duration="2859000" />
       <workItem from="1666548246804" duration="5176000" />
       <workItem from="1666603493911" duration="35275000" />
-      <workItem from="1666666166894" duration="306000" />
+      <workItem from="1666666108041" duration="56000" />
     </task>
     <servers />
   </component>
