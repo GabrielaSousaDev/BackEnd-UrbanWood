@@ -1,0 +1,9 @@
+{
+  "id": 1,
+  "streetName": "Rua fds Teste",
+  "number": 2,
+  "neighborhood": "Teste",
+  "complement": "Casa",
+  "city": "Blumenau",
+  "cep": "89090654"
+}
